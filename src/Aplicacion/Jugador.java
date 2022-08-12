@@ -1,14 +1,12 @@
-package com.example.pasapalabravisual;
+package Aplicacion;
 
 import java.io.Serializable;
 
 /**
- *
- *  * @author Julia Martínez Vélez
- * @author Ana León Cruz
- * @author Marta Soria Morales
+ * Clase que almacena la información necesaria del jugador
  */
 
+//TODO AÑADIR HOMBRE O MUJER
 public class Jugador implements Serializable {
 
     private String nombre;

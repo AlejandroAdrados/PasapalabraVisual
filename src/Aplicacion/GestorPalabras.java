@@ -1,4 +1,4 @@
-package com.example.pasapalabravisual;
+package Aplicacion;
 
 import java.io.BufferedReader;
 import java.io.File;

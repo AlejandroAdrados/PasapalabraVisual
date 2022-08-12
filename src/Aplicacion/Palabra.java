@@ -1,4 +1,4 @@
-package com.example.pasapalabravisual;
+package Aplicacion;
 
 /**
  * Clase que almacena la letra, el enunciado y la palabra en cuestión

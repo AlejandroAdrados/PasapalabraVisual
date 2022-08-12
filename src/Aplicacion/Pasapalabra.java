@@ -1,16 +1,13 @@
-package com.example.pasapalabravisual;
+package Aplicacion;
 
 import java.io.IOException;
 import java.util.Scanner;
 
 /**
- * * @author Julia Martínez Vélez
- *
- * @author Ana León Cruz
- * @author Marta Soria Morales
+ * MAIN sin interfaz gráfica
  */
 public class Pasapalabra {
-
+    //TODO PASAR TODO A CONTROLADORES Y ELIMINAR CLASE
     public static void main(String[] args) throws IOException, ClassNotFoundException {
 
         Ficheros ficheros = new Ficheros();
@@ -43,7 +40,7 @@ public class Pasapalabra {
                     String jugador2 = leer.nextLine();
                     Jugador j2 = sistema.getJugador(jugador2);
                     if (j1 != null && j2 != null && !j1.equals(j2)) {
-                        sistema.partida(j1, j2);
+                        //sistema.partida(j1, j2);
                     } else {
                         System.out.println("Error con los nombres de los jugadores.");
                     }
