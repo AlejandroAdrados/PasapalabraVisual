@@ -1,0 +1,91 @@
+A|Amigo|Hay un ... en mí/
+A|Aceituna|Fruto del olivo/
+A|Adiós|para despedirse/
+A|Abanderar|Ponerse al frente de una causa, movimiento u organización para defenderlos o luchar por ellos/
+A|Avión|Objeto volador#
+B|Burrito|Con mi ... sabanero/
+B|Bizcocho|Dulce blando y esponjoso, hecho generalmente con harina, huevos y azúcar, que se cuece en el horno/
+B|Balón|Pelota grande, usada en juegos o con fines terapéuticos/
+B|Balcón|Ventana abierta hasta el suelo de la habitación, generalmente con prolongación voladiza, con barandilla/
+B|Boda|Ceremonia mediante la cual se unen en matrimonio dos personas, y fiesta con que se celebra#
+C|Cámara|Aparato para tomar fotos/
+C|Criar|Dicho de una cosa o de un ser vivo: Originar, producir algo/
+C|Cesta|Recipiente tejido con mimbres, juncos, cañas, varillas de sauce u otra madera flexible, que sirve para recoger o llevar ropas, frutas y otros objetos/
+C|Cortar|Dividir algo o separar sus partes con algún instrumento cortante#
+D|Dividir|Partir o separar algo en partes/
+D|Doblar|Aumentar algo, haciéndolo otro tanto más de lo que era/
+D|Descanso|Parada de un trabajo o esfuerzo#
+E|Empadronar|Censar/
+E|Eructar|Expeler con ruido por la boca los gases del estómago/
+E|Espantar|Producir miedo#
+F|Flotar|Antónimo de hundirse/
+F|Firmar|Dicho de una persona: Poner su firma/
+F|Fusión|Unión#
+G|Girar|Mover una figura o un objeto alrededor de un punto o de un eje/
+G|Gafas|Anteojos/
+G|Gasto|Consumo#
+H|Hostigar|Dar golpes con una fusta, un látigo u otro instrumento, para hacer mover, juntar o dispersar/
+H|Hotel|Establecimiento de hostelería capaz de alojar con comodidad a huéspedes o viajeros/
+H|Hablar|Pronunciar sonidos/
+H|Hermoso|Gran belleza#
+I|Introducción|Acción y efecto de introducir o introducirse/
+I|Ingobernable|Que no se puede gobernar/
+I|Insólito|Que no sucede casi nunca#
+J|Jamón|Puede ser de pata negra/
+J|Jazmín|Arbusto de la familia de las oleáceas, con tallos verdes, delgados, flexibles, algo
+trepadores y de cuatro a seis metros de longitud, hojas alternas y compuestas de hojuelas
+estrechas, en número impar, duras, enteras y lanceoladas, flores en el extremo de los tallos,
+pedunculadas, blancas, olorosas, de cinco pétalos soldados por la parte inferior a manera de e
+mbudo, y fruto en baya negra y esférica. Es originario de Persia y
+se cultiva en los jardines por el excelente olor de sus flores, que utiliza la perfumería/
+J|Jardinero|Persona que trabaja en un jardín#
+K|Kelvin|Unidad de temperatura termodinámica del sistema internacional,
+igual al grado Celsius, pero en la escala de temperatura
+absoluta en que el 0 está fijado en −273,16 °C. (Símb. K)/
+K|Káiser|Emperador de Alemania y Austria/
+K|Kiwi|Fruto comestible del kiwi, de piel ligeramente vellosa y pulpa de color verde#
+L|Libro|Conjunto de muchas hojas de papel u otro material semejante que, encuadernadas, forman un volumen/
+L|Literato|Dicho de una persona: Versada en literatura/
+L|Luminoso|Lo contrario a oscuro#
+M|Mesa|Tiene 4 patas y sirve para apoyar cosas/
+M|Maizal|Tierra sembrada de maíz/
+M|Macarrones|Pasta con forma de cilindros#
+N|Navidad|Día en el que nace el niño Jesús/
+N|Nacarado|Dicho de un color o del brillo: Que tiene irisaciones, como el nácar/
+N|Nada|Inexistencia total o carencia absoluta de cualquier ser#
+O|Ostentar|Mostrar o hacer patente algo/
+O|Oasis|Sitio con vegetación y a veces con manantiales, que se encuentra aislado en los desiertos arenosos de África y Asia/
+O|Obcecar|Cegar, deslumbrar u ofuscar#
+P|Pachanga|Partido informal de fútbol, baloncesto u otros deportes/
+P|Pilotar|Dirigir un buque, especialmente a la entrada o salida de puertos, barras/
+P|Pitar|Dar una pitada a alguien, manifestar desagrado contra él silbándole#
+Q|Queso|Producto obtenido por maduración de la cuajada de la leche con características propias para cada uno de los tipos según su origen o método de fabricación/
+Q|Quieto|Que no tiene o no hace movimiento/
+Q|Querer|Canción de Manuel Carrasco "Qué bonito es ..."#
+R|Rumba|Palo flamenco de ritmo alegre/
+R|Rata|Mamífero roedor, de unos 36 cm desde el hocico a la extremidad de la cola, muy larga, con cabeza pequeña, hocico puntiagudo, orejas tiesas, cuerpo grueso, patas cortas, pelaje gris oscuro, muy fecundo y voraz/
+R|Risa|Movimiento de la boca y otras partes del rostro, que demuestra alegría#
+S|Seta|Cualquier especie de hongo, comestible o no, con forma de sombrilla, sostenida por un pedicelo/
+S|Sábado|Sexto día de la semana, que es festivo para el judaísmo y otras confesiones religiosas/
+S|Seguir|Ir después o detrás de alguien#
+T|Taco|Pedazo de madera, metal u otra materia, corto y grueso, que se encaja en algún hueco/
+T|Tibia|Hueso principal y anterior de la pierna, que se articula con el fémur, el peroné y el astrágalo/
+T|Truco|Cada una de las mañas o habilidades que se adquieren en el ejercicio de un arte, oficio o profesión#
+U|Untar|Aplicar y extender superficialmente aceite u otra materia pingüe sobre algo/
+U|Ubicación|Acción y efecto de ubicar/
+U|Ucraniano|Natural de Ucrania, país de Europa#
+V|Vivero|Terreno adonde se trasplantan desde la almáciga los árboles pequeños, para trasponerlos, después de recriados, a su lugar definitivo/
+V|Vida|Fuerza o actividad esencial mediante la que obra el ser que la posee/
+V|Volar|Ir o moverse por el aire, sosteniéndose con las alas#
+W|Ventana en inglés|Window/
+W|Walkman|Reproductor portátil de casetes provisto de auriculares/
+W|Walkie-talkie|Transmisor y receptor portátil de radio que sirve para comunicaciones de corta distancia#
+X|Xenofobia|Fobia a lo extranjero o a los extranjeros/
+X|Xilófono|Instrumento musical de percusión formado por láminas generalmente de madera, ordenadas horizontalmente según su tamaño y sonido, que se hacen sonar golpeándolas con dos baquetas/
+X|Xilema|Tejido leñoso de las plantas vasculares, que transporta principalmente agua y minerales de una parte a otra de estos organismos#
+Y|Yema|Brote embrionario de los vegetales constituido por hojas o por esbozos foliares a modo de botón escamoso del que se desarrollarán ramas, hojas y flores/
+Y|Yogur|Producto lácteo obtenido mediante reducción por evaporación y fermentación bacteriana de la leche/
+Y|Ya|Inmediatamente, ahora mismo#
+Z|Zambullir|Meter debajo del agua con ímpetu o de golpe/
+Z|Zodiaco|Zona o faja celeste por cuyo centro pasa la eclíptica y que comprende los doce signos, casas o constelaciones que recorre el Sol en su curso anual aparente, a saber, Aries, Tauro, Géminis, Cáncer, Leo, Virgo, Libra, Escorpión, Sagitario, Capricornio, Acuario y Piscis/
+Z|Zócalo| Cuerpo inferior de un edificio u obra, que sirve para elevar los basamentos a un mismo nivel#
