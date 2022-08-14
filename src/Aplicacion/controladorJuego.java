@@ -113,11 +113,11 @@ public class controladorJuego implements Initializable{
         Image image = new Image(archivo.toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setVisible(true);
-        imageView.setFitHeight(726);
-        imageView.setFitWidth(1323);
+        imageView.setFitHeight(488);
+        imageView.setFitWidth(753);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        imageView.setLayoutX(-4);
+        imageView.setLayoutX(-3);
         pane.getChildren().add(imageView);
     }
 
