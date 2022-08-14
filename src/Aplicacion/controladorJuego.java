@@ -1,12 +1,14 @@
 package Aplicacion;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -19,9 +21,9 @@ import java.util.ResourceBundle;
 
 public class controladorJuego implements Initializable{
     @FXML
-    private Label pregunta;
+    private Label pregunta,letra,turno,puntos;
     @FXML
-    private TextArea respuesta;
+    private TextField respuesta;
     @FXML
     private ImageView avatar;
     @FXML
@@ -40,7 +42,11 @@ public class controladorJuego implements Initializable{
         jugar.setVisible(false);
         avatar.setVisible(true);
         palabra = gestorPalabras.darDefinicion(sistema.getJugadorActual().getTurno());
+        letra.setText("Empieza por " + palabra.getLetra());
         pregunta.setText(palabra.getPregunta());
+        turno.setText("Turno de " + sistema.getJugadorActual().getNombre());
+        respuesta.setText("");
+        puntos.setText(sistema.getJugadorActual().getPuntos() + "");
     }
 
 
@@ -49,23 +55,23 @@ public class controladorJuego implements Initializable{
      * @throws IOException
      */
     public void responder() throws IOException {
-        String usuario = respuesta.getParagraphs().toString();
-        respuesta.setText("");
-        String respuestaUsuario = usuario.substring(1, usuario.length() - 1);
-        if (respuestaUsuario.equals("Pasapalabra")) { //TODO BOTON PASAPALABRA
-            System.out.println(" pasó el turno.");
-            sistema.getJugadorActual().aumentarTurno();
-            cambiarTurno();
-        } else if (respuestaUsuario.equals(palabra.getSolucion())) {
+        String usuario = respuesta.getText();
+        if (usuario.equals(palabra.getSolucion())) {
             cambiarLetra(sistema.getJugadorActual().getTurno(),true);
+            sistema.getJugadorActual().aumentarPuntos();
             sistema.getJugadorActual().aumentarTurno();
         } else {
             cambiarLetra(sistema.getJugadorActual().getTurno(),false);
             sistema.getJugadorActual().aumentarTurno();
             cambiarTurno();
         }
-        palabra = gestorPalabras.darDefinicion(sistema.getJugadorActual().getTurno());
-        pregunta.setText(palabra.getPregunta());
+        preguntar();
+    }
+
+    public void pasapalabra(ActionEvent actionEvent) throws IOException {
+        sistema.getJugadorActual().aumentarTurno();
+        cambiarTurno();
+        preguntar();
     }
 
     /**
@@ -73,8 +79,7 @@ public class controladorJuego implements Initializable{
      */
     private void cambiarTurno(){
         sistema.cambiarTurno();
-        ObservableList<Node> aa = pane.getChildren();
-        if(sistema.getJugadorActual().getNombre()=="Alejandro"){
+        if(sistema.getJugadorActual().getNombre()=="Ana"){
             listaElementosJ1.clear();
             listaElementosJ1.addAll(pane.getChildren());
             pane.getChildren().clear();
@@ -127,5 +132,8 @@ public class controladorJuego implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         listaElementosJ1.addAll(pane.getChildren());
         listaElementosJ2.addAll(pane.getChildren());
+        File file = new File("Resources/AvatarHombre.png");
+        Image image = new Image(file.toURI().toString());
+        avatar.setImage(image);
     }
 }

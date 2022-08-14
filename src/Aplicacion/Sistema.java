@@ -20,8 +20,8 @@ public class Sistema{
      */
     public Sistema(Ficheros ficheros){
         this.ficheros=ficheros;
-        jugador1 =new Jugador("Alejandro");
-        jugador2 =new Jugador("Ana");
+        jugador1 = new Jugador("Alejandro");
+        jugador2 = new Jugador("Ana");
         jugadorActual= jugador1;
     }
 
