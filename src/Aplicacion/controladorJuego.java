@@ -25,11 +25,11 @@ public class controladorJuego implements Initializable{
     @FXML
     private TextField respuesta;
     @FXML
-    private ImageView avatar;
+    private ImageView avatar, imagenTurno, pasapalabra;
     @FXML
     private Button jugar;
     @FXML
-    AnchorPane pane;
+    AnchorPane pane2;
 
     Ficheros ficheros = new Ficheros();
     Sistema sistema = new Sistema(ficheros);
@@ -40,7 +40,10 @@ public class controladorJuego implements Initializable{
     private ArrayList<Node> listaElementosJ2 = new ArrayList<>();
     public void preguntar() throws IOException {
         jugar.setVisible(false);
+        respuesta.setVisible(true);
         avatar.setVisible(true);
+        imagenTurno.setVisible(true);
+        pasapalabra.setVisible(true);
         palabra = gestorPalabras.darDefinicion(sistema.getJugadorActual().getTurno());
         letra.setText("Empieza por " + palabra.getLetra());
         pregunta.setText(palabra.getPregunta());
@@ -68,7 +71,7 @@ public class controladorJuego implements Initializable{
         preguntar();
     }
 
-    public void pasapalabra(ActionEvent actionEvent) throws IOException {
+    public void pasapalabra() throws IOException {
         sistema.getJugadorActual().aumentarTurno();
         cambiarTurno();
         preguntar();
@@ -81,17 +84,17 @@ public class controladorJuego implements Initializable{
         sistema.cambiarTurno();
         if(sistema.getJugadorActual().getNombre()=="Ana"){
             listaElementosJ1.clear();
-            listaElementosJ1.addAll(pane.getChildren());
-            pane.getChildren().clear();
-            pane.getChildren().addAll(listaElementosJ2);
+            listaElementosJ1.addAll(pane2.getChildren());
+            pane2.getChildren().clear();
+            pane2.getChildren().addAll(listaElementosJ2);
             File file = new File("Resources/AvatarMujer.png");
             Image image = new Image(file.toURI().toString());
             avatar.setImage(image);
         }else{
             listaElementosJ2.clear();
-            listaElementosJ2.addAll(pane.getChildren());
-            pane.getChildren().clear();
-            pane.getChildren().addAll(listaElementosJ1);
+            listaElementosJ2.addAll(pane2.getChildren());
+            pane2.getChildren().clear();
+            pane2.getChildren().addAll(listaElementosJ1);
             File file = new File("Resources/AvatarHombre.png");
             Image image = new Image(file.toURI().toString());
             avatar.setImage(image);
@@ -113,12 +116,11 @@ public class controladorJuego implements Initializable{
         Image image = new Image(archivo.toURI().toString());
         ImageView imageView = new ImageView(image);
         imageView.setVisible(true);
-        imageView.setFitHeight(488);
-        imageView.setFitWidth(753);
+        imageView.setFitHeight(796);
+        imageView.setFitWidth(1366);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        imageView.setLayoutX(-3);
-        pane.getChildren().add(imageView);
+        pane2.getChildren().add(imageView);
     }
 
     /**
@@ -130,10 +132,22 @@ public class controladorJuego implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        listaElementosJ1.addAll(pane.getChildren());
-        listaElementosJ2.addAll(pane.getChildren());
+        listaElementosJ1.addAll(pane2.getChildren());
+        listaElementosJ2.addAll(pane2.getChildren());
         File file = new File("Resources/AvatarHombre.png");
         Image image = new Image(file.toURI().toString());
         avatar.setImage(image);
+    }
+
+    public void entrarImagen(){
+        File file = new File("Resources/PasapalabraDentro.png");
+        Image image = new Image(file.toURI().toString());
+        pasapalabra.setImage(image);
+    }
+
+    public void salirImagen(){
+        File file = new File("Resources/PasapalabraFuera.png");
+        Image image = new Image(file.toURI().toString());
+        pasapalabra.setImage(image);
     }
 }

@@ -2,69 +2,61 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.controladorJuego">
+<AnchorPane fx:id="pane" maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #0E266A;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.controladorJuego">
    <children>
-      <ImageView fitHeight="488.0" fitWidth="753.0" layoutX="-3.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="796.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@fondo.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="avatar" fitHeight="242.0" fitWidth="219.0" layoutX="264.0" layoutY="89.0" pickOnBounds="true" preserveRatio="true" visible="false">
-         </ImageView>
-      <Button fx:id="jugar" layoutX="283.0" layoutY="155.0" mnemonicParsing="false" onAction="#preguntar" prefHeight="114.0" prefWidth="180.0" text="JUGAR" />
-      <Circle fill="#307dc6" layoutX="141.0" layoutY="577.0" radius="100.0" stroke="#423e3e00" strokeType="INSIDE" />
-      <Label fx:id="puntos" alignment="CENTER" contentDisplay="CENTER" layoutX="51.0" layoutY="530.0" prefHeight="95.0" prefWidth="180.0" textAlignment="CENTER" textFill="WHITE">
+      <ImageView fx:id="avatar" fitHeight="194.0" fitWidth="201.0" layoutX="586.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@AvatarHombre.png" />
+         </image></ImageView>
+      <AnchorPane fx:id="pane2" prefHeight="777.0" prefWidth="1372.0" />
+      <Button fx:id="jugar" layoutX="593.0" layoutY="324.0" mnemonicParsing="false" onAction="#preguntar" prefHeight="114.0" prefWidth="180.0" text="JUGAR" />
+      <Circle fill="#0c2f91" layoutX="147.0" layoutY="637.0" radius="76.0" stroke="#423e3e00" strokeType="INSIDE" />
+      <Label fx:id="puntos" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="590.0" prefHeight="66.0" prefWidth="144.0" textAlignment="CENTER" textFill="WHITE">
          <font>
             <Font size="77.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="749.0" prefHeight="726.0" prefWidth="597.0" style="-fx-background-color: #0C2F91;">
-         <children>
-            <VBox alignment="CENTER" prefHeight="726.0" prefWidth="635.0">
-               <children>
-                  <Label fx:id="turno" alignment="CENTER" prefHeight="37.0" prefWidth="726.0" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Separator orientation="VERTICAL" prefHeight="54.0" prefWidth="5.0" visible="false" />
-                  <Label fx:id="letra" alignment="CENTER" prefHeight="79.0" prefWidth="1280.0" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Separator orientation="VERTICAL" prefHeight="36.0" prefWidth="378.0" visible="false" />
-                  <Label fx:id="pregunta" alignment="CENTER" prefHeight="214.0" prefWidth="616.0" text="" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </Label>
-                  <Separator orientation="VERTICAL" prefHeight="87.0" prefWidth="40.0" visible="false" />
-                  <TextField fx:id="respuesta" layoutX="29.0" layoutY="298.0" maxWidth="590.0" onAction="#responder" prefHeight="85.0" prefWidth="500.0" promptText="Escriba su respuesta" style="-fx-text-fill: #0C2F91 #0C2F91; -fx-text-inner-color: #0C2F91 #0C2F91 #0C2F91 #0C2F91;">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                  </TextField>
-                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button mnemonicParsing="false" onAction="#pasapalabra" prefHeight="57.0" prefWidth="112.0" text="PASAPALABRA" />
-                        <Separator prefHeight="4.0" prefWidth="293.0" visible="false" />
-                        <Button fx:id="enviar" mnemonicParsing="false" onAction="#responder" prefHeight="57.0" prefWidth="121.0" text="ENVIAR" />
-                     </children>
-                  </HBox>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
+      <ImageView fx:id="imagenTurno" fitHeight="128.0" fitWidth="352.0" layoutX="28.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@Cartel.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="turno" alignment="CENTER" layoutX="34.0" layoutY="77.0" lineSpacing="9.0" prefHeight="57.0" prefWidth="341.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="letra" alignment="CENTER" layoutX="594.0" layoutY="105.0" prefHeight="79.0" prefWidth="180.0" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="pregunta" alignment="CENTER" contentDisplay="CENTER" layoutX="497.0" layoutY="170.0" prefHeight="188.0" prefWidth="374.0" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <TextField fx:id="respuesta" layoutX="503.0" layoutY="541.0" maxWidth="590.0" onAction="#responder" pickOnBounds="false" prefHeight="57.0" prefWidth="361.0" promptText="Escriba su respuesta" style="-fx-text-inner-color: #FFFFFF; -fx-control-inner-background: #0C2F91 #0C2F91 #0C2F91 #0C2F91 #0C2F91 #0C2F91 #0C2F91 #0C2F91;" visible="false">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="pasapalabra" fitHeight="95.0" fitWidth="308.0" layoutX="1021.0" layoutY="637.0" onMouseClicked="#pasapalabra" onMouseEntered="#entrarImagen" onMouseExited="#salirImagen" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@PasapalabraFuera.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
