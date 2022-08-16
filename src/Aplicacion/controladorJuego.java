@@ -1,13 +1,10 @@
 package Aplicacion;
 
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -35,16 +32,27 @@ public class controladorJuego implements Initializable{
     Sistema sistema = new Sistema(ficheros);
     GestorPalabras gestorPalabras = new GestorPalabras();
     private Palabra palabra;
-
     private ArrayList<Node> listaElementosJ1 = new ArrayList<>();
     private ArrayList<Node> listaElementosJ2 = new ArrayList<>();
+
+    /**
+     * Método que escribe en la interfaz gráfica la pregunta
+     * @throws IOException
+     */
     public void preguntar() throws IOException {
         jugar.setVisible(false);
         respuesta.setVisible(true);
         avatar.setVisible(true);
         imagenTurno.setVisible(true);
         pasapalabra.setVisible(true);
-        palabra = gestorPalabras.darDefinicion(sistema.getJugadorActual().getTurno());
+        if(sistema.getJugadorActual().getIndice()<sistema.getPalabrasJugadorActual().size() && !sistema.getPalabrasJugadorActual().isEmpty()){
+        }else if(!sistema.getPalabrasJugadorActual().isEmpty()){
+            sistema.getJugadorActual().setIndice(0);
+        }else{ //Lista vacía => Jugador ha terminado
+            cambiarTurno();
+        }
+        palabra=sistema.getPalabrasJugadorActual().get(sistema.getJugadorActual().getIndice());
+        //palabra = gestorPalabras.darDefinicion(sistema.getJugadorActual().getTurno());
         letra.setText("Empieza por " + palabra.getLetra());
         pregunta.setText(palabra.getPregunta());
         turno.setText("Turno de " + sistema.getJugadorActual().getNombre());
@@ -60,19 +68,23 @@ public class controladorJuego implements Initializable{
     public void responder() throws IOException {
         String usuario = respuesta.getText();
         if (usuario.equals(palabra.getSolucion())) {
-            cambiarLetra(sistema.getJugadorActual().getTurno(),true);
+            cambiarLetra(true);
             sistema.getJugadorActual().aumentarPuntos();
-            sistema.getJugadorActual().aumentarTurno();
+            sistema.palabraRespondida();
         } else {
-            cambiarLetra(sistema.getJugadorActual().getTurno(),false);
-            sistema.getJugadorActual().aumentarTurno();
+            cambiarLetra(false);
+            sistema.palabraRespondida();
             cambiarTurno();
         }
         preguntar();
     }
 
+    /**
+     * Método que se ejecuta tras dar al botón de pasapalabra
+     * @throws IOException
+     */
     public void pasapalabra() throws IOException {
-        sistema.getJugadorActual().aumentarTurno();
+        sistema.getJugadorActual().aumentarIndice();
         cambiarTurno();
         preguntar();
     }
@@ -81,37 +93,38 @@ public class controladorJuego implements Initializable{
      * Cambia el turno del jugador, cambiando avatar y rosco de cada uno
      */
     private void cambiarTurno(){
-        sistema.cambiarTurno();
-        if(sistema.getJugadorActual().getNombre()=="Ana"){
-            listaElementosJ1.clear();
-            listaElementosJ1.addAll(pane2.getChildren());
-            pane2.getChildren().clear();
-            pane2.getChildren().addAll(listaElementosJ2);
-            File file = new File("Resources/AvatarMujer.png");
-            Image image = new Image(file.toURI().toString());
-            avatar.setImage(image);
-        }else{
-            listaElementosJ2.clear();
-            listaElementosJ2.addAll(pane2.getChildren());
-            pane2.getChildren().clear();
-            pane2.getChildren().addAll(listaElementosJ1);
-            File file = new File("Resources/AvatarHombre.png");
-            Image image = new Image(file.toURI().toString());
-            avatar.setImage(image);
+        if (sistema.cambiarTurno()){
+            if(sistema.getJugadorActual().equals(sistema.getJugador1())){
+                listaElementosJ1.clear();
+                listaElementosJ1.addAll(pane2.getChildren());
+                pane2.getChildren().clear();
+                pane2.getChildren().addAll(listaElementosJ2);
+                File file = new File("Resources/AvatarHombre.png");
+                Image image = new Image(file.toURI().toString());
+                avatar.setImage(image);
+            }else{
+                listaElementosJ2.clear();
+                listaElementosJ2.addAll(pane2.getChildren());
+                pane2.getChildren().clear();
+                pane2.getChildren().addAll(listaElementosJ1);
+                File file = new File("Resources/AvatarMujer.png");
+                Image image = new Image(file.toURI().toString());
+                avatar.setImage(image);
+            }
         }
     }
 
     /**
      * Cambia el color de la letra dependiendo de acierto o error
-     * @param numLetra
      * @param acierto
      */
-    private void cambiarLetra(int numLetra, Boolean acierto){
+    private void cambiarLetra(Boolean acierto){
+        String letra = palabra.getLetra();
         File archivo;
         if(acierto) {
-            archivo = new File("Resources/LETRASPASAPALABRA/" + numLetra + "VERDE.png");
+            archivo = new File("Resources/LETRASPASAPALABRA/" + letra + "VERDE.png");
         } else{
-            archivo = new File("Resources/LETRASPASAPALABRA/" + numLetra + "ROJO.png");
+            archivo = new File("Resources/LETRASPASAPALABRA/" + letra + "ROJO.png");
         }
         Image image = new Image(archivo.toURI().toString());
         ImageView imageView = new ImageView(image);
@@ -137,6 +150,11 @@ public class controladorJuego implements Initializable{
         File file = new File("Resources/AvatarHombre.png");
         Image image = new Image(file.toURI().toString());
         avatar.setImage(image);
+        try {
+            sistema.cargarRosco();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void entrarImagen(){

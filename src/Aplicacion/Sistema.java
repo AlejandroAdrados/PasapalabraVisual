@@ -11,6 +11,10 @@ public class Sistema{
     private ArrayList<Jugador> jugadores;
     private Jugador jugador1, jugador2, jugadorActual;
 
+    private ArrayList<Palabra> palabrasJ1 = new ArrayList<>();
+    private ArrayList<Palabra> palabrasJ2 = new ArrayList<>();
+    private ArrayList<Palabra> palabrasJugadorActual;
+
     Ficheros ficheros;
 
     /**
@@ -23,8 +27,30 @@ public class Sistema{
         jugador1 = new Jugador("Alejandro");
         jugador2 = new Jugador("Ana");
         jugadorActual= jugador1;
+        palabrasJugadorActual=palabrasJ1;
     }
 
+
+    /**
+     * Método que inicializa el rosco de cada jugador y lo guarda en su respectiva lista
+     * @throws IOException
+     */
+    public void cargarRosco() throws IOException {
+        GestorPalabras gestorPalabras = new GestorPalabras();
+        for(int i=1; i<=25; i++){
+            palabrasJ1.add(gestorPalabras.darDefinicion(i));
+            palabrasJ2.add(gestorPalabras.darDefinicion(i));
+        }
+    }
+
+
+    /**
+     * Método que elimina la palabra respondida por el usuario de su respectiva lista
+     */
+    public void palabraRespondida(){
+        palabrasJugadorActual.remove(jugadorActual.getIndice());
+        jugadorActual.aumentarLetrasRespondidas();
+    }
     /**
      * Se lee por pantalla el nombre del jugador
      * y se guarda dicho jugador en el fichero
@@ -81,13 +107,24 @@ public class Sistema{
     }
 
     /**
-     * Método que cambia el jugadorActual
+     * Método que cambia el turno entre los jugadores si es posible
+     * @return Boolean si se ha cambiado el turno o no
      */
-   public void cambiarTurno(){
-        if(jugadorActual== jugador1){
-            jugadorActual= jugador2;
+   public Boolean cambiarTurno(){
+        if(jugadorActual.equals(jugador1) && jugador2.getLetrasRespondidas()<25){
+            jugadorActual = jugador2;
+            palabrasJugadorActual = palabrasJ2;
+            return true;
+        }else if(jugadorActual.equals(jugador2) && jugador1.getLetrasRespondidas()<25){
+            jugadorActual = jugador1;
+            palabrasJugadorActual = palabrasJ1;
+            return true;
         }else{
-            jugadorActual= jugador1;
+            if(jugador1.getLetrasRespondidas()==25 && jugador2.getLetrasRespondidas()==25){
+                System.out.println("PARTIDA TERMINADA");
+                System.exit(0);
+            }
+            return false;
         }
    }
 
@@ -183,4 +220,7 @@ public class Sistema{
         return jugadores;
     }
 
+    public ArrayList<Palabra> getPalabrasJugadorActual() {
+        return palabrasJugadorActual;
+    }
 }
