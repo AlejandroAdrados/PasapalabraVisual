@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class controladorJuego implements Initializable{
+public class ControladorJuego extends ControladorGeneral implements Initializable {
     @FXML
     private Label pregunta,letra,turno,puntos;
     @FXML
@@ -50,9 +50,15 @@ public class controladorJuego implements Initializable{
             sistema.getJugadorActual().setIndice(0);
         }else{ //Lista vacía => Jugador ha terminado
             cambiarTurno();
+            if(sistema.getJugadorActual().getIndice()<sistema.getPalabrasJugadorActual().size() && !sistema.getPalabrasJugadorActual().isEmpty()){
+            }else if(!sistema.getPalabrasJugadorActual().isEmpty()) {
+                sistema.getJugadorActual().setIndice(0);
+            }
+            else{
+                cambiarTurno(); //Ambos jugadores han terminado
+            }
         }
         palabra=sistema.getPalabrasJugadorActual().get(sistema.getJugadorActual().getIndice());
-        //palabra = gestorPalabras.darDefinicion(sistema.getJugadorActual().getTurno());
         letra.setText("Empieza por " + palabra.getLetra());
         pregunta.setText(palabra.getPregunta());
         turno.setText("Turno de " + sistema.getJugadorActual().getNombre());
@@ -152,6 +158,11 @@ public class controladorJuego implements Initializable{
         avatar.setImage(image);
         try {
             sistema.cargarRosco();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        try {
+            preguntar();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
