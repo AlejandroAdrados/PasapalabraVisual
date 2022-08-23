@@ -10,7 +10,12 @@ public class Ficheros implements Serializable{
     private ArrayList<Jugador> jugadores;
     private File ficheroJugadores = new File("Resources/Jugadores.txt");
 
-    public ArrayList<Jugador> leerJugadores() throws IOException, ClassNotFoundException {
+    /**
+     * Método que carga los jugadores del fichero jugadores.txt en una lista.
+     * @throws IOException
+     * @throws ClassNotFoundException
+     */
+    public void leerJugadores() throws IOException, ClassNotFoundException {
         if (!ficheroJugadores.exists()){
             jugadores = new ArrayList<>();
         }
@@ -20,14 +25,31 @@ public class Ficheros implements Serializable{
             jugadores = (ArrayList<Jugador>) leyendoFichero.readObject();
             leyendoFichero.close();
         }
-        return jugadores;
     }
 
+    /**
+     * Método que guarda un jugador nuevo en el fichero jugadores.txt (Si no existe el fichero lo crea).
+     * @param jugador
+     * @throws IOException
+     */
     public void guardarJugador(Jugador jugador) throws IOException {
         jugadores.add(jugador);
         if (!ficheroJugadores.exists()){
             ficheroJugadores.createNewFile();
         }
+        ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
+                new FileOutputStream("Resources/Jugadores.txt") );
+        escribiendoFichero.writeObject(jugadores);
+        escribiendoFichero.close();
+    }
+
+    /**
+     * Método que elimina un jugador en concreto del fichero jugadores.txt
+     * @param jugador
+     * @throws IOException
+     */
+    public void eliminarJugador(Jugador jugador) throws IOException {
+        jugadores.remove(jugador);
         ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
                 new FileOutputStream("Resources/Jugadores.txt") );
         escribiendoFichero.writeObject(jugadores);

@@ -19,63 +19,153 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Clase que controla la operativa de la vista del menú de administrador (vistaAdmin.fxml).
+ */
 public class ControladorAdmin extends ControladorGeneral implements Initializable {
 
     @FXML
-    private AnchorPane pane, paneNormal, paneCreacion;
+    private AnchorPane paneNormal, paneCreacion, paneInvisible; //paneCreacion contiene los items de creación o edición de jugadores
+    //paneInvisible sirve para volver al paneNormal desde paneCreacion
     @FXML
-    private ImageView avatar, creacionAvatar;
+    private ImageView avatar, creacionAvatar, editar, eliminar;
     @FXML
-    private Label nombre, jugadas, aciertos, noJugadores;
+    private Label nombre, jugadas, aciertos;
     @FXML
     private TextField creacionNombre;
-
     private Ficheros gestorFicheros;
-
     private ArrayList<Jugador> jugadores;
-    private void seleccionLista(String nombreLista){
-        nombre.setText("NOMBRE: " + nombreLista.toUpperCase());
-        jugadas.setText("PARTIDAS JUGADAS: " + 38);
-        aciertos.setText("MEDIA DE ACIERTOS: " + 19);
-        File file;
-        Jugador jugadorBuscado=null;
-        for(Jugador jugador : jugadores) {
-            if (jugador.getNombre().equals(nombreLista)) {
-                jugadorBuscado=jugador;
-                break;
+    private String nombreJugadorSeleccionado;
+    private Boolean edicion = false; //Indica si se está creando o editando un jugador
+    private Jugador jugador;
+
+
+    /**
+     * Método que devuelve el jugador que selecciona el usuario en la lista
+     *
+     * @return Jugador seleccionado
+     */
+    private Jugador jugadorSeleccionado() {
+        for (Jugador jugador : jugadores) {
+            if (jugador.getNombre().equals(nombreJugadorSeleccionado)) {
+                return jugador;
             }
         }
-        if(jugadorBuscado.getAvatar()==0){
-            file = new File("Resources/AvatarHombre.png");}
-        else{
-            file = new File("Resources/AvatarMujer.png");}
-        Image image = new Image(file.toURI().toString());
-        avatar.setImage(image);
+        return null;
     }
 
+    /**
+     * Método que muestra la interfaz de creación o edición de jugador
+     */
     @FXML
-    public void menuCreacionJugador(){
+    private void mostrarMenuCreacionJugador() {
         paneNormal.setOpacity(0.53);
         paneCreacion.setVisible(true);
+        paneInvisible.setMouseTransparent(false);
+        paneNormal.setMouseTransparent(true);
     }
 
+    /**
+     * Método que actualiza los datos del jugador seleccionado en la interfaz gráfica
+     */
+    private void actualizarDatosPantalla() {
+        jugador = jugadorSeleccionado();
+        nombre.setText("NOMBRE: " + jugador.getNombre().toUpperCase());
+        jugadas.setText("PARTIDAS JUGADAS: " + jugador.getPartidasJugadas());
+        if (jugador.getPartidasJugadas() != 0) {
+            aciertos.setText("MEDIA DE ACIERTOS: " + jugador.getPuntosTotales() / jugador.getPartidasJugadas());
+        } else {
+            aciertos.setText("MEDIA DE ACIERTOS: " + 0);
+        }
+        File file = null;
+        switch (jugador.getAvatar()) {
+            case 0:
+                file = new File("Resources/AvatarHombre.png");
+                break;
+            case 1:
+                file = new File("Resources/AvatarMujer.png");
+                break;
+        }
+        Image image = new Image(file.toURI().toString());
+        avatar.setImage(image);
+        editar.setVisible(true);
+        eliminar.setVisible(true);
+    }
+
+    /**
+     * Método para crear o editar un jugador (según booleano edicion).
+     * - Si lo crea solo requiere nombre y avatar introducido por el usuario.
+     * - Si lo edita requiere nombre y avatar introducido por el usuario y transifere los puntos totales y
+     * partidas jugdadas del jugador inicial.
+     *
+     * @throws IOException
+     */
     @FXML
     private void crearJugador() throws IOException {
         String nombre = creacionNombre.getText();
         int avatar;
-        if((creacionAvatar.getImage().getUrl().endsWith("Resources/AvatarMujer.png"))){
-            avatar=1;
+        if ((creacionAvatar.getImage().getUrl().endsWith("Resources/AvatarMujer.png"))) {
+            avatar = 1;
+        } else {
+            avatar = 0;
         }
-        else{
-            avatar=0;
+        Jugador jugadorNuevo;
+        if (edicion) {
+            jugadorNuevo = new Jugador(nombre, avatar, jugador.getPartidasJugadas(), jugador.getPuntosTotales());
+            gestorFicheros.eliminarJugador(jugador);
+            edicion=false;
+        } else {
+            jugadorNuevo = new Jugador(nombre, avatar);
         }
-        Jugador jugadorNuevo = new Jugador(nombre,avatar);
         gestorFicheros.guardarJugador(jugadorNuevo);
         paneCreacion.setVisible(false);
         paneNormal.setOpacity(1);
-        loadView("vistaAdmin.fxml");
+        cargarVista("vistaAdmin.fxml");
     }
 
+    /**
+     * Método que lanza el menú de creación de jugador con los datos del jugador actual y lo elimina para crear uno nuevo
+     *
+     */
+    @FXML
+    private void editarJugador() {
+        jugador = jugadorSeleccionado();
+        mostrarMenuCreacionJugador();
+        File file = null;
+        switch (jugador.getAvatar()) {
+            case 0:
+                file = new File("Resources/AvatarHombre.png");
+                break;
+            case 1:
+                file = new File("Resources/AvatarMujer.png");
+                break;
+        }
+        Image image = new Image(file.toURI().toString());
+        creacionAvatar.setImage(image);
+        creacionNombre.setText(jugador.getNombre());
+        edicion=true;
+    }
+
+    /**
+     * Elimina el jugador seleccionado por el usuario.
+     *
+     * @throws IOException
+     */
+    @FXML
+    private void eliminarJugador() throws IOException {
+        jugador = jugadorSeleccionado();
+        gestorFicheros.eliminarJugador(jugador);
+        cargarVista("vistaAdmin.fxml");
+    }
+
+    /**
+     * Método que carga los elementos necesarios antes de mostrar la vista.
+     *
+     * @param location  The location used to resolve relative paths for the root object, or
+     *                  {@code null} if the location is not known.
+     * @param resources The resources used to localize the root object, or {@code null} if
+     *                  the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         gestorFicheros = new Ficheros();
@@ -90,38 +180,41 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         jugadores = gestorFicheros.getJugadores();
         Label noJugadores = null;
         Boolean hayJugadores;
-        if(jugadores.isEmpty()){
+        if (jugadores.isEmpty()) {
             noJugadores = new Label();
             noJugadores.setLayoutX(185);
-            noJugadores.setLayoutY(307);
+            noJugadores.setLayoutY(340);
             noJugadores.setFont(new Font(20));
             noJugadores.setText("NO HAY JUGADORES REGISTRADOS");
-            hayJugadores=false;
-        }else{
+            hayJugadores = false;
+        } else {
             for (int i = 0; i < jugadores.size(); i++) {
                 lista.getItems().add(jugadores.get(i).getNombre());
             }
-            hayJugadores=true;
+            hayJugadores = true;
         }
 
         lista.setPrefHeight(320);
         lista.setPrefWidth(341);
         lista.setLayoutX(175);
         lista.setLayoutY(198);
+        lista.getOnEditStart();
         paneNormal.getChildren().add(lista);
-        if(!hayJugadores){
+        if (!hayJugadores) {
             paneNormal.getChildren().add(noJugadores);
         }
         lista.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                seleccionLista(newValue);
+                nombreJugadorSeleccionado = newValue;
+                actualizarDatosPantalla();
             }
         });
     }
 
     /**
      * Método para cambiar la imagen cuando el ratón está sobre ella
+     *
      * @param mouseEvent
      */
     @FXML
@@ -139,10 +232,16 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
             File file = new File("Resources/ImagenesAdmin/editar2.png");
             Image image = new Image(file.toURI().toString());
             imageView.setImage(image);
+        } else if (imageView.getId().equals("atras")) {
+            File file = new File("Resources/ImagenesAdmin/atras2.png");
+            Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
         }
     }
+
     /**
      * Método para cambiar la imagen cuando el ratón está fuera de ella
+     *
      * @param mouseEvent
      */
     @FXML
@@ -160,18 +259,47 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
             File file = new File("Resources/ImagenesAdmin/editar.png");
             Image image = new Image(file.toURI().toString());
             imageView.setImage(image);
+        } else if (imageView.getId().equals("atras")) {
+            File file = new File("Resources/ImagenesAdmin/atras.png");
+            Image image = new Image(file.toURI().toString());
+            imageView.setImage(image);
         }
     }
 
-    public void avatarAnterior() {
+    /**
+     * Método que se lanza tras dar a la flecha izquierda de creación de usuario cambiando el avatar.
+     */
+    @FXML
+    private void avatarAnterior() {
         File file = new File("Resources/AvatarHombre.png");
         Image image = new Image(file.toURI().toString());
         creacionAvatar.setImage(image);
     }
 
-    public void avatarSiguiente() {
+    /**
+     * Método que se lanza tras dar a la flecha derecha de creación de usuario cambiando el avatar.
+     */
+    @FXML
+    private void avatarSiguiente() {
         File file = new File("Resources/AvatarMujer.png");
         Image image = new Image(file.toURI().toString());
         creacionAvatar.setImage(image);
+    }
+
+    /**
+     * Método que se ejecuta cuando el menú de creación está desplegado y se hace click fuera de éste. Con él se
+     * cierra el menú de creación y vuelve a cargar la vista original.
+     */
+    @FXML
+    private void volver() {
+        cargarVista("vistaAdmin.fxml");
+    }
+
+    /**
+     * Método que se ejecuta al hacer click en el botón atrás y su función es cargar la vista del menú principal.
+     */
+    @FXML
+    private void menu() {
+        cargarVista("vistaMenu.fxml");
     }
 }

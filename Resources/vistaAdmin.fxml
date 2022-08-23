@@ -52,17 +52,17 @@
                   </HBox>
                </children>
             </VBox>
-            <ImageView fx:id="anadir" fitHeight="99.0" fitWidth="319.0" layoutX="190.0" layoutY="582.0" onMouseClicked="#menuCreacionJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="anadir" fitHeight="99.0" fitWidth="319.0" layoutX="190.0" layoutY="582.0" onMouseClicked="#mostrarMenuCreacionJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@ImagenesAdmin/anadir.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="editar" fitHeight="99.0" fitWidth="319.0" layoutX="906.0" layoutY="539.0" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="editar" fitHeight="99.0" fitWidth="319.0" layoutX="906.0" layoutY="539.0" onMouseClicked="#editarJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@ImagenesAdmin/editar.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="eliminar" fitHeight="58.0" fitWidth="328.0" layoutX="902.0" layoutY="626.0" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="eliminar" fitHeight="58.0" fitWidth="328.0" layoutX="902.0" layoutY="626.0" onMouseClicked="#eliminarJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@ImagenesAdmin/eliminar.png" />
                </image>
@@ -72,8 +72,14 @@
                   <Font size="22.0" />
                </font>
             </Label>
+            <ImageView fx:id="atras" fitHeight="50.0" fitWidth="150.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#menu" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImagenesAdmin/atras.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="paneInvisible" mouseTransparent="true" onMouseClicked="#volver" prefHeight="768.0" prefWidth="1366.0" />
       <AnchorPane fx:id="paneCreacion" layoutX="439.0" layoutY="150.0" prefHeight="458.0" prefWidth="475.0" style="-fx-background-color: #0c2f91;" visible="false">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="276.0" prefHeight="80.0" prefWidth="475.0" text="ESCRIBA SU NOMBRE" textFill="WHITE">

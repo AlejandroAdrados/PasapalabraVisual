@@ -9,18 +9,36 @@ import java.io.Serializable;
 //TODO AÑADIR HOMBRE O MUJER
 public class Jugador implements Serializable {
 
-    private String nombre;
-    private int puntos;
-    private int indice; //Índice que sigue el jugador en su respectiva lista
-    private int letrasRespondidas; //Número de letras respondidas (Acertadas o falladas)
-    private int avatar;
+    private String nombre; //Nombre del jugador
+    private int puntos; //Puntos que lleva durante una partida (Fuera de ella será 0)
+    private int indice; //Índice que sigue el jugador en su respectiva lista (Fuera del juego es 0)
+    private int letrasRespondidas; //Número de letras respondidas (Acertadas o falladas) (Fuera del juego es 0)
+    private int avatar; //Número que define el tipo de avatar (Hasta ahora 0=Avatar hombre; 1=Avatar mujer)
+    private int partidasJugadas; //Número que almacena el histórico de partidas jugadas por parte del jugador
+    private int puntosTotales; //Número que almacena el histórico de puntos conseguidos por parte del jugador
 
+    /**
+     * Constructor de la clase cuando un jugador se crea desde el inicio.
+     * @param nombre
+     * @param avatar
+     */
     public Jugador(String nombre, int avatar) {
         this.nombre = nombre;
-        puntos = 0;
-        letrasRespondidas = 0;
-        indice =0;
         this.avatar = avatar;
+    }
+
+    /**
+     * Constructor de la clase cuando se edita un jugador (partidasJugadas y puntosTotales se transfieren del original)
+     * @param nombre
+     * @param avatar
+     * @param partidasJugadas
+     * @param puntosTotales
+     */
+    public Jugador(String nombre, int avatar, int partidasJugadas, int puntosTotales) {
+        this.nombre = nombre;
+        this.avatar = avatar;
+        this.partidasJugadas = partidasJugadas;
+        this.puntosTotales = puntosTotales;
     }
 
     public String getNombre() {
@@ -67,5 +85,28 @@ public class Jugador implements Serializable {
 
     public int getAvatar() {
         return avatar;
+    }
+
+    public int getPartidasJugadas() {
+        return partidasJugadas;
+    }
+
+    public int getPuntosTotales() {
+        return puntosTotales;
+    }
+
+    public void aumentarPartidasJugadas(){
+        partidasJugadas++;
+    }
+    public void sumarPuntosTotales(){
+        puntosTotales+=puntos;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setAvatar(int avatar) {
+        this.avatar = avatar;
     }
 }

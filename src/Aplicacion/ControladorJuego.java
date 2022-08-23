@@ -16,6 +16,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+/**
+ * Clase que controla la operativa de la vista del juego (vistaJuego.fxml).
+ */
 public class ControladorJuego extends ControladorGeneral implements Initializable {
     @FXML
     private Label pregunta,letra,turno,puntos;
@@ -30,7 +33,6 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
 
     Ficheros ficheros = new Ficheros();
     Sistema sistema = new Sistema(ficheros);
-    GestorPalabras gestorPalabras = new GestorPalabras();
     private Palabra palabra;
     private ArrayList<Node> listaElementosJ1 = new ArrayList<>();
     private ArrayList<Node> listaElementosJ2 = new ArrayList<>();
@@ -39,7 +41,8 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * Método que escribe en la interfaz gráfica la pregunta
      * @throws IOException
      */
-    public void preguntar() throws IOException {
+    @FXML
+    private void preguntar() throws IOException {
         jugar.setVisible(false);
         respuesta.setVisible(true);
         avatar.setVisible(true);
@@ -71,7 +74,8 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * Método que se ejecuta tras dar al botón responder
      * @throws IOException
      */
-    public void responder() throws IOException {
+    @FXML
+    private void responder() throws IOException {
         String usuario = respuesta.getText();
         if (usuario.equals(palabra.getSolucion())) {
             cambiarLetra(true);
@@ -89,7 +93,8 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * Método que se ejecuta tras dar al botón de pasapalabra
      * @throws IOException
      */
-    public void pasapalabra() throws IOException {
+    @FXML
+    private void pasapalabra() throws IOException {
         sistema.getJugadorActual().aumentarIndice();
         cambiarTurno();
         preguntar();
@@ -168,12 +173,20 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
         }
     }
 
-    public void entrarImagen(){
+    /**
+     * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
+     */
+    @FXML
+    private void entrarImagen(){
         File file = new File("Resources/PasapalabraDentro.png");
         Image image = new Image(file.toURI().toString());
         pasapalabra.setImage(image);
     }
 
+    /**
+     * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
+     */
+    @FXML
     public void salirImagen(){
         File file = new File("Resources/PasapalabraFuera.png");
         Image image = new Image(file.toURI().toString());

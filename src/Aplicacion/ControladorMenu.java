@@ -4,25 +4,34 @@ import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import java.awt.*;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 
+/**
+ * Clase que controla la operativa de la vista del menú (vistaMenu.fxml).
+ */
 public class ControladorMenu extends ControladorGeneral {
+    /**
+     * Carga la vista del juego.
+     */
     @FXML
-    public void jugar(){
-        loadView("vistaJuego.fxml");
+    private void jugar(){
+        cargarVista("vistaJuego.fxml");
     }
 
+    /**
+     * Carga la vista del menú de administrador.
+     */
     @FXML
-    public void adminMenu(){
-        loadView("vistaAdmin.fxml");
+    private void adminMenu(){
+        cargarVista("vistaAdmin.fxml");
     }
 
+    /**
+     * Abre el archivo pdf de las instrucciones (Ubicado en Resources) con el visor predeterminado.
+     * @throws IOException
+     */
     @FXML
     public void comoJugar() throws IOException {
             File instrucciones = new File("Resources/Instrucciones.pdf");
