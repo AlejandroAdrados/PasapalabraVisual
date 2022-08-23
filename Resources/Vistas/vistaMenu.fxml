@@ -8,27 +8,27 @@
    <children>
       <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ImagenesMenu/fondo.png" />
+            <Image url="@../ImagenesMenu/fondo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="424.0" fitWidth="1096.0" layoutX="196.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ImagenesMenu/titulo.png" />
+            <Image url="@../ImagenesMenu/titulo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="jugar" fitHeight="191.0" fitWidth="450.0" layoutX="458.0" layoutY="341.0" onMouseClicked="#jugar" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ImagenesMenu/jugar.png" />
+            <Image url="@../ImagenesMenu/jugar.png" />
          </image>
       </ImageView>
       <ImageView fx:id="admin" fitHeight="68.0" fitWidth="301.0" layoutX="533.0" layoutY="575.0" onMouseClicked="#adminMenu" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ImagenesMenu/admin.png" />
+            <Image url="@../ImagenesMenu/admin.png" />
          </image>
       </ImageView>
       <ImageView fx:id="como" fitHeight="54.0" fitWidth="279.0" layoutX="547.0" layoutY="671.0" onMouseClicked="#comoJugar" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@ImagenesMenu/como.png" />
+            <Image url="@../ImagenesMenu/como.png" />
          </image>
       </ImageView>
    </children>

@@ -13,12 +13,12 @@
    <children>
       <ImageView fitHeight="796.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@fondo.png" />
+            <Image url="@../ImagenesJuego/fondo.png" />
          </image>
       </ImageView>
       <ImageView fx:id="avatar" fitHeight="194.0" fitWidth="201.0" layoutX="586.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@AvatarHombre.png" />
+            <Image url="@../ImagenesAvatares/AvatarHombre.png" />
          </image></ImageView>
       <AnchorPane fx:id="pane2" prefHeight="777.0" prefWidth="1372.0" />
       <Button fx:id="jugar" layoutX="593.0" layoutY="324.0" mnemonicParsing="false" onAction="#preguntar" prefHeight="114.0" prefWidth="180.0" text="JUGAR" />
@@ -30,7 +30,7 @@
       </Label>
       <ImageView fx:id="imagenTurno" fitHeight="128.0" fitWidth="352.0" layoutX="28.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@Cartel.png" />
+            <Image url="@../ImagenesJuego/Cartel.png" />
          </image>
       </ImageView>
       <Label fx:id="turno" alignment="CENTER" layoutX="34.0" layoutY="77.0" lineSpacing="9.0" prefHeight="57.0" prefWidth="341.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
@@ -55,7 +55,7 @@
       </TextField>
       <ImageView fx:id="pasapalabra" fitHeight="95.0" fitWidth="308.0" layoutX="1021.0" layoutY="637.0" onMouseClicked="#pasapalabra" onMouseEntered="#entrarImagen" onMouseExited="#salirImagen" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@PasapalabraFuera.png" />
+            <Image url="@../ImagenesJuego/PasapalabraFuera.png" />
          </image>
       </ImageView>
    </children>

@@ -110,7 +110,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
                 listaElementosJ1.addAll(pane2.getChildren());
                 pane2.getChildren().clear();
                 pane2.getChildren().addAll(listaElementosJ2);
-                File file = new File("Resources/AvatarHombre.png");
+                File file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
                 Image image = new Image(file.toURI().toString());
                 avatar.setImage(image);
             }else{
@@ -118,7 +118,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
                 listaElementosJ2.addAll(pane2.getChildren());
                 pane2.getChildren().clear();
                 pane2.getChildren().addAll(listaElementosJ1);
-                File file = new File("Resources/AvatarMujer.png");
+                File file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
                 Image image = new Image(file.toURI().toString());
                 avatar.setImage(image);
             }
@@ -158,7 +158,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
         listaElementosJ1.addAll(pane2.getChildren());
         listaElementosJ2.addAll(pane2.getChildren());
-        File file = new File("Resources/AvatarHombre.png");
+        File file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
         Image image = new Image(file.toURI().toString());
         avatar.setImage(image);
         try {
@@ -178,7 +178,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void entrarImagen(){
-        File file = new File("Resources/PasapalabraDentro.png");
+        File file = new File("Resources/ImagenesJuego/PasapalabraDentro.png");
         Image image = new Image(file.toURI().toString());
         pasapalabra.setImage(image);
     }
@@ -188,7 +188,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      */
     @FXML
     public void salirImagen(){
-        File file = new File("Resources/PasapalabraFuera.png");
+        File file = new File("Resources/ImagenesJuego/PasapalabraFuera.png");
         Image image = new Image(file.toURI().toString());
         pasapalabra.setImage(image);
     }

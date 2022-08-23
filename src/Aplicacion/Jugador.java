@@ -6,7 +6,6 @@ import java.io.Serializable;
  * Clase que almacena la información necesaria del jugador
  */
 
-//TODO AÑADIR HOMBRE O MUJER
 public class Jugador implements Serializable {
 
     private String nombre; //Nombre del jugador

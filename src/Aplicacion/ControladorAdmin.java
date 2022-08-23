@@ -80,10 +80,10 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         File file = null;
         switch (jugador.getAvatar()) {
             case 0:
-                file = new File("Resources/AvatarHombre.png");
+                file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
                 break;
             case 1:
-                file = new File("Resources/AvatarMujer.png");
+                file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
                 break;
         }
         Image image = new Image(file.toURI().toString());
@@ -104,7 +104,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     private void crearJugador() throws IOException {
         String nombre = creacionNombre.getText();
         int avatar;
-        if ((creacionAvatar.getImage().getUrl().endsWith("Resources/AvatarMujer.png"))) {
+        if ((creacionAvatar.getImage().getUrl().endsWith("Resources/ImagenesAvatares/AvatarMujer.png"))) {
             avatar = 1;
         } else {
             avatar = 0;
@@ -120,7 +120,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         gestorFicheros.guardarJugador(jugadorNuevo);
         paneCreacion.setVisible(false);
         paneNormal.setOpacity(1);
-        cargarVista("vistaAdmin.fxml");
+        cargarVista("Vistas/vistaAdmin.fxml");
     }
 
     /**
@@ -134,10 +134,10 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         File file = null;
         switch (jugador.getAvatar()) {
             case 0:
-                file = new File("Resources/AvatarHombre.png");
+                file = new File("Resources/ImagenesAvatares/Hombre.png");
                 break;
             case 1:
-                file = new File("Resources/AvatarMujer.png");
+                file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
                 break;
         }
         Image image = new Image(file.toURI().toString());
@@ -155,7 +155,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     private void eliminarJugador() throws IOException {
         jugador = jugadorSeleccionado();
         gestorFicheros.eliminarJugador(jugador);
-        cargarVista("vistaAdmin.fxml");
+        cargarVista("Vistas/vistaAdmin.fxml");
     }
 
     /**
@@ -271,7 +271,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void avatarAnterior() {
-        File file = new File("Resources/AvatarHombre.png");
+        File file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
         Image image = new Image(file.toURI().toString());
         creacionAvatar.setImage(image);
     }
@@ -281,7 +281,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void avatarSiguiente() {
-        File file = new File("Resources/AvatarMujer.png");
+        File file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
         Image image = new Image(file.toURI().toString());
         creacionAvatar.setImage(image);
     }
@@ -292,7 +292,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void volver() {
-        cargarVista("vistaAdmin.fxml");
+        cargarVista("Vistas/vistaAdmin.fxml");
     }
 
     /**
@@ -300,6 +300,6 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void menu() {
-        cargarVista("vistaMenu.fxml");
+        cargarVista("Vistas/vistaMenu.fxml");
     }
 }

@@ -17,7 +17,7 @@
          <children>
             <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@ImagenesMenu/fondo.png" />
+                  <Image url="@../ImagenesMenu/fondo.png" />
                </image>
             </ImageView>
             <VBox alignment="CENTER" layoutX="865.0" layoutY="43.0" prefHeight="458.0" prefWidth="402.0">
@@ -54,17 +54,17 @@
             </VBox>
             <ImageView fx:id="anadir" fitHeight="99.0" fitWidth="319.0" layoutX="190.0" layoutY="582.0" onMouseClicked="#mostrarMenuCreacionJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@ImagenesAdmin/anadir.png" />
+                  <Image url="@../ImagenesAdmin/anadir.png" />
                </image>
             </ImageView>
             <ImageView fx:id="editar" fitHeight="99.0" fitWidth="319.0" layoutX="906.0" layoutY="539.0" onMouseClicked="#editarJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@ImagenesAdmin/editar.png" />
+                  <Image url="@../ImagenesAdmin/editar.png" />
                </image>
             </ImageView>
             <ImageView fx:id="eliminar" fitHeight="58.0" fitWidth="328.0" layoutX="902.0" layoutY="626.0" onMouseClicked="#eliminarJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
-                  <Image url="@ImagenesAdmin/eliminar.png" />
+                  <Image url="@../ImagenesAdmin/eliminar.png" />
                </image>
             </ImageView>
             <Label fx:id="noJugadores" layoutX="172.0" layoutY="307.0" text="NO HAY JUGADORES REGISTRADOS" visible="false">
@@ -74,7 +74,7 @@
             </Label>
             <ImageView fx:id="atras" fitHeight="50.0" fitWidth="150.0" layoutX="50.0" layoutY="50.0" onMouseClicked="#menu" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@ImagenesAdmin/atras.png" />
+                  <Image url="@../ImagenesAdmin/atras.png" />
                </image>
             </ImageView>
          </children>
@@ -89,7 +89,7 @@
             </Label>
             <ImageView fx:id="creacionAvatar" fitHeight="150.0" fitWidth="200.0" layoutX="163.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@AvatarHombre.png" />
+                  <Image url="@../ImagenesAvatares/AvatarHombre.png" />
                </image>
             </ImageView>
             <Polygon fill="WHITE" layoutX="136.0" layoutY="156.0" onMouseClicked="#avatarAnterior" points="-24.5, 29.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />

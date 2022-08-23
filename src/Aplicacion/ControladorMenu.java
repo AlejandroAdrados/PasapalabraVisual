@@ -17,7 +17,7 @@ public class ControladorMenu extends ControladorGeneral {
      */
     @FXML
     private void jugar(){
-        cargarVista("vistaJuego.fxml");
+        cargarVista("Vistas/vistaJuego.fxml");
     }
 
     /**
@@ -25,7 +25,7 @@ public class ControladorMenu extends ControladorGeneral {
      */
     @FXML
     private void adminMenu(){
-        cargarVista("vistaAdmin.fxml");
+        cargarVista("Vistas/vistaAdmin.fxml");
     }
 
     /**
@@ -34,7 +34,7 @@ public class ControladorMenu extends ControladorGeneral {
      */
     @FXML
     public void comoJugar() throws IOException {
-            File instrucciones = new File("Resources/Instrucciones.pdf");
+            File instrucciones = new File("Resources/Instrucciones/Instrucciones.pdf");
             Desktop.getDesktop().open(instrucciones);
     }
 

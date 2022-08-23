@@ -24,7 +24,7 @@ public class inicioAplicacion extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         contenedor = new Contenedor();
-        FXMLLoader fxmlLoader = new FXMLLoader(inicioAplicacion.class.getClassLoader().getResource("vistaMenu.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(inicioAplicacion.class.getClassLoader().getResource("Vistas/vistaMenu.fxml"));
         contenedor.setEscenario(stage);
         contenedor.setFxmlLoader(fxmlLoader);
         Scene escena = new Scene(fxmlLoader.load(), 1366, 768);
