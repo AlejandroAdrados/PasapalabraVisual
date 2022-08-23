@@ -24,8 +24,8 @@ public class Sistema{
      */
     public Sistema(Ficheros ficheros){
         this.ficheros=ficheros;
-        jugador1 = new Jugador("Alejandro");
-        jugador2 = new Jugador("Ana");
+        jugador1 = new Jugador("Alejandro",0);
+        jugador2 = new Jugador("Ana",1);
         jugadorActual= jugador1;
         palabrasJugadorActual=palabrasJ1;
     }
@@ -63,7 +63,7 @@ public class Sistema{
         System.out.println("Introduce el nombre del jugador ");
         Scanner leer = new Scanner(System.in);
         String nombre = leer.nextLine();
-        Jugador jugadorNuevo = new Jugador(nombre);
+        Jugador jugadorNuevo = new Jugador(nombre,0);
         ficheros.guardarJugador(jugadorNuevo);
     }
 

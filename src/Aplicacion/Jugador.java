@@ -13,12 +13,14 @@ public class Jugador implements Serializable {
     private int puntos;
     private int indice; //Índice que sigue el jugador en su respectiva lista
     private int letrasRespondidas; //Número de letras respondidas (Acertadas o falladas)
+    private int avatar;
 
-    public Jugador(String nombre) {
+    public Jugador(String nombre, int avatar) {
         this.nombre = nombre;
         puntos = 0;
         letrasRespondidas = 0;
         indice =0;
+        this.avatar = avatar;
     }
 
     public String getNombre() {
@@ -61,5 +63,9 @@ public class Jugador implements Serializable {
 
     public void setIndice(int indice) {
         this.indice = indice;
+    }
+
+    public int getAvatar() {
+        return avatar;
     }
 }

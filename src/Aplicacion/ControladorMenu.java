@@ -32,7 +32,6 @@ public class ControladorMenu extends ControladorGeneral {
     /**
      * Método para cambiar la imagen cuando el ratón está sobre ella
      * @param mouseEvent
-     * @throws FileNotFoundException
      */
     @FXML
     private void imagenDentro(MouseEvent mouseEvent) {  //Código de color #0c2f91
@@ -54,7 +53,6 @@ public class ControladorMenu extends ControladorGeneral {
     /**
      * Método para cambiar la imagen cuando el ratón está fuera de ella
      * @param mouseEvent
-     * @throws FileNotFoundException
      */
     @FXML
     private void imagenFuera(MouseEvent mouseEvent) { //Código de color #0842e3

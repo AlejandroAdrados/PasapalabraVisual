@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.ControladorAdmin">
+   <children>
+      <AnchorPane fx:id="paneNormal" prefHeight="768.0" prefWidth="1366.0">
+         <children>
+            <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImagenesMenu/fondo.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER" layoutX="865.0" layoutY="43.0" prefHeight="458.0" prefWidth="402.0">
+               <children>
+                  <ImageView fx:id="avatar" fitHeight="203.0" fitWidth="185.0" pickOnBounds="true" preserveRatio="true" />
+                  <Separator orientation="VERTICAL" prefHeight="35.0" prefWidth="9.0" visible="false" />
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Separator prefHeight="31.0" prefWidth="189.0" visible="false" />
+                        <VBox alignment="CENTER" prefHeight="119.0" prefWidth="490.0">
+                           <children>
+                              <Label fx:id="nombre" lineSpacing="5.0" prefHeight="33.0" prefWidth="411.0" textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="23.0" prefWidth="6.0" visible="false" />
+                              <Label fx:id="jugadas" prefHeight="33.0" prefWidth="360.0" textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Separator orientation="VERTICAL" prefHeight="23.0" prefWidth="6.0" visible="false" />
+                              <Label fx:id="aciertos" prefHeight="33.0" prefWidth="420.0" textFill="WHITE">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fx:id="anadir" fitHeight="99.0" fitWidth="319.0" layoutX="190.0" layoutY="582.0" onMouseClicked="#menuCreacionJugador" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImagenesAdmin/anadir.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="editar" fitHeight="99.0" fitWidth="319.0" layoutX="906.0" layoutY="539.0" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImagenesAdmin/editar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="eliminar" fitHeight="58.0" fitWidth="328.0" layoutX="902.0" layoutY="626.0" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@ImagenesAdmin/eliminar.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="noJugadores" layoutX="172.0" layoutY="307.0" text="NO HAY JUGADORES REGISTRADOS" visible="false">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneCreacion" layoutX="439.0" layoutY="150.0" prefHeight="458.0" prefWidth="475.0" style="-fx-background-color: #0c2f91;" visible="false">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="276.0" prefHeight="80.0" prefWidth="475.0" text="ESCRIBA SU NOMBRE" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="creacionAvatar" fitHeight="150.0" fitWidth="200.0" layoutX="163.0" layoutY="109.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@AvatarHombre.png" />
+               </image>
+            </ImageView>
+            <Polygon fill="WHITE" layoutX="136.0" layoutY="156.0" onMouseClicked="#avatarAnterior" points="-24.5, 29.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />
+            <Polygon fill="WHITE" layoutX="338.0" layoutY="156.0" onMouseClicked="#avatarSiguiente" points="26.5, 28.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />
+            <TextField fx:id="creacionNombre" layoutX="111.0" layoutY="367.0" onAction="#crearJugador" prefHeight="53.0" prefWidth="254.0" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="80.0" prefWidth="475.0" text="SELECCIONE SU AVATAR" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
