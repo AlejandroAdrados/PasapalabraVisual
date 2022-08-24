@@ -56,6 +56,15 @@ public class Ficheros implements Serializable{
         escribiendoFichero.close();
     }
 
+    public Jugador buscarJugador(String nombreJugador){
+        for (Jugador jugador : jugadores) {
+            if (jugador.getNombre().equals(nombreJugador)) {
+                return jugador;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Jugador> getJugadores() {
         return jugadores;
     }

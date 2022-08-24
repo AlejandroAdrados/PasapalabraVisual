@@ -1,35 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.ControladorMenu">
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.ControladorMenu">
    <children>
-      <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../ImagenesMenu/fondo.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="424.0" fitWidth="1096.0" layoutX="196.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../ImagenesMenu/titulo.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="jugar" fitHeight="191.0" fitWidth="450.0" layoutX="458.0" layoutY="341.0" onMouseClicked="#jugar" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../ImagenesMenu/jugar.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="admin" fitHeight="68.0" fitWidth="301.0" layoutX="533.0" layoutY="575.0" onMouseClicked="#adminMenu" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../ImagenesMenu/admin.png" />
-         </image>
-      </ImageView>
-      <ImageView fx:id="como" fitHeight="54.0" fitWidth="279.0" layoutX="547.0" layoutY="671.0" onMouseClicked="#comoJugar" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../ImagenesMenu/como.png" />
-         </image>
-      </ImageView>
+      <AnchorPane fx:id="paneNormal" prefHeight="768.0" prefWidth="1366.0">
+         <children>
+            <ImageView fitHeight="768.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImagenesMenu/fondo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="424.0" fitWidth="1096.0" layoutX="196.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImagenesMenu/titulo.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="jugar" fitHeight="191.0" fitWidth="450.0" layoutX="458.0" layoutY="341.0" onMouseClicked="#mostrarMenuPartida" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImagenesMenu/jugar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="admin" fitHeight="68.0" fitWidth="301.0" layoutX="533.0" layoutY="575.0" onMouseClicked="#adminMenu" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImagenesMenu/admin.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="como" fitHeight="54.0" fitWidth="279.0" layoutX="547.0" layoutY="671.0" onMouseClicked="#comoJugar" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../ImagenesMenu/como.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneInvisible" mouseTransparent="true" onMouseClicked="#volver" prefHeight="768.0" prefWidth="1366.0" />
+      <AnchorPane fx:id="paneJugadores" layoutX="291.0" layoutY="182.0" mouseTransparent="true" prefHeight="457.0" prefWidth="786.0" style="-fx-background-color: #0c2f91;" visible="false">
+         <children>
+            <Label layoutX="204.0" layoutY="35.0" text="SELECCIÓN DE JUGADORES" textFill="WHITE">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="comboJ1" layoutX="112.0" layoutY="304.0" onAction="#seleccionJ1" prefWidth="150.0" promptText="JUGADOR 1" />
+            <ComboBox fx:id="comboJ2" layoutX="531.0" layoutY="304.0" onAction="#seleccionJ2" prefWidth="150.0" promptText="JUGADOR 2" />
+            <ImageView fx:id="avatarJ1" fitHeight="150.0" fitWidth="200.0" layoutX="112.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="avatarJ2" fitHeight="150.0" fitWidth="200.0" layoutX="531.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="359.0" layoutY="180.0" prefHeight="54.0" prefWidth="68.0" text="VS" textFill="WHITE">
+               <font>
+                  <Font size="54.0" />
+               </font>
+            </Label>
+            <Button layoutX="321.0" layoutY="362.0" mnemonicParsing="false" onAction="#empezar" prefHeight="54.0" prefWidth="144.0" text="EMPEZAR PARTIDA" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

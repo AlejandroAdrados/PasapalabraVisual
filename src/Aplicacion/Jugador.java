@@ -12,7 +12,7 @@ public class Jugador implements Serializable {
     private int puntos; //Puntos que lleva durante una partida (Fuera de ella será 0)
     private int indice; //Índice que sigue el jugador en su respectiva lista (Fuera del juego es 0)
     private int letrasRespondidas; //Número de letras respondidas (Acertadas o falladas) (Fuera del juego es 0)
-    private int avatar; //Número que define el tipo de avatar (Hasta ahora 0=Avatar hombre; 1=Avatar mujer)
+    private String avatar; //Ruta relativa de la imagen
     private int partidasJugadas; //Número que almacena el histórico de partidas jugadas por parte del jugador
     private int puntosTotales; //Número que almacena el histórico de puntos conseguidos por parte del jugador
 
@@ -21,7 +21,7 @@ public class Jugador implements Serializable {
      * @param nombre
      * @param avatar
      */
-    public Jugador(String nombre, int avatar) {
+    public Jugador(String nombre, String avatar) {
         this.nombre = nombre;
         this.avatar = avatar;
     }
@@ -33,7 +33,7 @@ public class Jugador implements Serializable {
      * @param partidasJugadas
      * @param puntosTotales
      */
-    public Jugador(String nombre, int avatar, int partidasJugadas, int puntosTotales) {
+    public Jugador(String nombre, String avatar, int partidasJugadas, int puntosTotales) {
         this.nombre = nombre;
         this.avatar = avatar;
         this.partidasJugadas = partidasJugadas;
@@ -82,7 +82,7 @@ public class Jugador implements Serializable {
         this.indice = indice;
     }
 
-    public int getAvatar() {
+    public String getAvatar() {
         return avatar;
     }
 
@@ -105,7 +105,7 @@ public class Jugador implements Serializable {
         this.nombre = nombre;
     }
 
-    public void setAvatar(int avatar) {
+    public void setAvatar(String avatar) {
         this.avatar = avatar;
     }
 }

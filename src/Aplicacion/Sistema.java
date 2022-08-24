@@ -10,11 +10,9 @@ import java.util.Scanner;
 public class Sistema{
     private ArrayList<Jugador> jugadores;
     private Jugador jugador1, jugador2, jugadorActual;
-
     private ArrayList<Palabra> palabrasJ1 = new ArrayList<>();
     private ArrayList<Palabra> palabrasJ2 = new ArrayList<>();
     private ArrayList<Palabra> palabrasJugadorActual;
-
     Ficheros ficheros;
 
     /**
@@ -22,14 +20,13 @@ public class Sistema{
      *
      * @param ficheros
      */
-    public Sistema(Ficheros ficheros){
+    public Sistema(Ficheros ficheros, Jugador j1, Jugador j2){
         this.ficheros=ficheros;
-        jugador1 = new Jugador("Alejandro",0);
-        jugador2 = new Jugador("Ana",1);
-        jugadorActual= jugador1;
+        jugador1= j1;
+        jugador2 = j2;
+        jugadorActual = jugador1;
         palabrasJugadorActual=palabrasJ1;
     }
-
 
     /**
      * Método que inicializa el rosco de cada jugador y lo guarda en su respectiva lista
@@ -43,67 +40,12 @@ public class Sistema{
         }
     }
 
-
     /**
      * Método que elimina la palabra respondida por el usuario de su respectiva lista
      */
     public void palabraRespondida(){
         palabrasJugadorActual.remove(jugadorActual.getIndice());
         jugadorActual.aumentarLetrasRespondidas();
-    }
-    /**
-     * Se lee por pantalla el nombre del jugador
-     * y se guarda dicho jugador en el fichero
-     *
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
-    public void crearJugador() throws IOException, ClassNotFoundException {
-        ficheros.leerJugadores();
-        System.out.println("Introduce el nombre del jugador ");
-        Scanner leer = new Scanner(System.in);
-        String nombre = leer.nextLine();
-        Jugador jugadorNuevo = new Jugador(nombre,0);
-        ficheros.guardarJugador(jugadorNuevo);
-    }
-
-    /**
-     * Muestra la lista de jugadores
-     */
-    public void verJugadores() {
-        if(jugadores.isEmpty()){
-            System.out.println("No hay jugadores registrados hasta el momento");
-        }else{
-            System.out.println("Los jugadores registrados son:");
-            for (int i = 0; i < jugadores.size(); i++) {
-                System.out.println(i+1 + ". " + getJugadores().get(i).getNombre());
-            }
-        }
-    }
-
-    /**
-     * Cada vez que se carga el menú principal se actualiza
-     * la lista de jugadores desde el fichero
-     *
-     * @throws IOException
-     * @throws ClassNotFoundException
-     */
-    public void actualizarJugadores() throws IOException, ClassNotFoundException {
-        ficheros.leerJugadores();
-        jugadores=ficheros.getJugadores();
-    }
-
-    public void probar() throws IOException {
-        while(true) {
-            GestorPalabras gestorPalabras = new GestorPalabras();
-            System.out.println("Escribe la letra");
-            Scanner leer = new Scanner(System.in);
-            char caracter = leer.next().charAt(0);
-            Palabra palabra = gestorPalabras.darDefinicion(caracter - 96);
-            System.out.println("Letra:" + palabra.getLetra());
-            System.out.println("Enunciado:" + palabra.getPregunta());
-            System.out.println("Solución:" + palabra.getSolucion());
-        }
     }
 
     /**
@@ -204,21 +146,6 @@ public class Sistema{
         } catch (ClassNotFoundException ex) {
             System.err.println(ex);
     } }*/
-
-
-
-    public Jugador getJugador(String jugador1) {
-        for (int i = 0; i < jugadores.size(); i++) {
-            if (jugador1.equals(jugadores.get(i).getNombre())) {
-                return jugadores.get(i);
-            }
-        }
-        return null;
-
-    }
-    public ArrayList<Jugador> getJugadores() {
-        return jugadores;
-    }
 
     public ArrayList<Palabra> getPalabrasJugadorActual() {
         return palabrasJugadorActual;

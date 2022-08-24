@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 /**
  * Clase que controla la operativa de la vista del juego (vistaJuego.fxml).
  */
-public class ControladorJuego extends ControladorGeneral implements Initializable {
+public class ControladorJuego extends ControladorGeneral implements Initializable { //TODO Sumar partidas totales y puntos totales
     @FXML
     private Label pregunta,letra,turno,puntos;
     @FXML
@@ -30,43 +30,48 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
     private Button jugar;
     @FXML
     AnchorPane pane2;
-
-    Ficheros ficheros = new Ficheros();
-    Sistema sistema = new Sistema(ficheros);
     private Palabra palabra;
     private ArrayList<Node> listaElementosJ1 = new ArrayList<>();
     private ArrayList<Node> listaElementosJ2 = new ArrayList<>();
 
+    public void cargarRosco(){
+        turno.setText("Turno de " + getContenedor().getSistema().getJugadorActual().getNombre());
+        avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
+        try {
+            getContenedor().getSistema().cargarRosco();
+        } catch (IOException e) {
+            System.out.println("Error al cargar rosco");
+        }
+    }
     /**
      * Método que escribe en la interfaz gráfica la pregunta
      * @throws IOException
      */
     @FXML
-    private void preguntar() throws IOException {
+    public void preguntar() throws IOException {
         jugar.setVisible(false);
         respuesta.setVisible(true);
         avatar.setVisible(true);
         imagenTurno.setVisible(true);
         pasapalabra.setVisible(true);
-        if(sistema.getJugadorActual().getIndice()<sistema.getPalabrasJugadorActual().size() && !sistema.getPalabrasJugadorActual().isEmpty()){
-        }else if(!sistema.getPalabrasJugadorActual().isEmpty()){
-            sistema.getJugadorActual().setIndice(0);
+        if(getContenedor().getSistema().getJugadorActual().getIndice()<getContenedor().getSistema().getPalabrasJugadorActual().size() && !getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()){
+        }else if(!getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()){
+            getContenedor().getSistema().getJugadorActual().setIndice(0);
         }else{ //Lista vacía => Jugador ha terminado
             cambiarTurno();
-            if(sistema.getJugadorActual().getIndice()<sistema.getPalabrasJugadorActual().size() && !sistema.getPalabrasJugadorActual().isEmpty()){
-            }else if(!sistema.getPalabrasJugadorActual().isEmpty()) {
-                sistema.getJugadorActual().setIndice(0);
+            if(getContenedor().getSistema().getJugadorActual().getIndice()<getContenedor().getSistema().getPalabrasJugadorActual().size() && !getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()){
+            }else if(!getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()) {
+                getContenedor().getSistema().getJugadorActual().setIndice(0);
             }
             else{
                 cambiarTurno(); //Ambos jugadores han terminado
             }
         }
-        palabra=sistema.getPalabrasJugadorActual().get(sistema.getJugadorActual().getIndice());
+        palabra=getContenedor().getSistema().getPalabrasJugadorActual().get(getContenedor().getSistema().getJugadorActual().getIndice());
         letra.setText("Empieza por " + palabra.getLetra());
         pregunta.setText(palabra.getPregunta());
-        turno.setText("Turno de " + sistema.getJugadorActual().getNombre());
         respuesta.setText("");
-        puntos.setText(sistema.getJugadorActual().getPuntos() + "");
+        puntos.setText(getContenedor().getSistema().getJugadorActual().getPuntos() + "");
     }
 
 
@@ -79,11 +84,11 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
         String usuario = respuesta.getText();
         if (usuario.equals(palabra.getSolucion())) {
             cambiarLetra(true);
-            sistema.getJugadorActual().aumentarPuntos();
-            sistema.palabraRespondida();
+            getContenedor().getSistema().getJugadorActual().aumentarPuntos();
+            getContenedor().getSistema().palabraRespondida();
         } else {
             cambiarLetra(false);
-            sistema.palabraRespondida();
+            getContenedor().getSistema().palabraRespondida();
             cambiarTurno();
         }
         preguntar();
@@ -95,7 +100,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void pasapalabra() throws IOException {
-        sistema.getJugadorActual().aumentarIndice();
+        getContenedor().getSistema().getJugadorActual().aumentarIndice();
         cambiarTurno();
         preguntar();
     }
@@ -104,15 +109,12 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * Cambia el turno del jugador, cambiando avatar y rosco de cada uno
      */
     private void cambiarTurno(){
-        if (sistema.cambiarTurno()){
-            if(sistema.getJugadorActual().equals(sistema.getJugador1())){
+        if (getContenedor().getSistema().cambiarTurno()){
+            if(getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())){
                 listaElementosJ1.clear();
                 listaElementosJ1.addAll(pane2.getChildren());
                 pane2.getChildren().clear();
                 pane2.getChildren().addAll(listaElementosJ2);
-                File file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
-                Image image = new Image(file.toURI().toString());
-                avatar.setImage(image);
             }else{
                 listaElementosJ2.clear();
                 listaElementosJ2.addAll(pane2.getChildren());
@@ -120,8 +122,10 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
                 pane2.getChildren().addAll(listaElementosJ1);
                 File file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
                 Image image = new Image(file.toURI().toString());
-                avatar.setImage(image);
+                avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
             }
+            turno.setText("Turno de " + getContenedor().getSistema().getJugadorActual().getNombre());
+            avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
         }
     }
 
@@ -158,19 +162,6 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
     public void initialize(URL location, ResourceBundle resources) {
         listaElementosJ1.addAll(pane2.getChildren());
         listaElementosJ2.addAll(pane2.getChildren());
-        File file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
-        Image image = new Image(file.toURI().toString());
-        avatar.setImage(image);
-        try {
-            sistema.cargarRosco();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        try {
-            preguntar();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
     }
 
     /**

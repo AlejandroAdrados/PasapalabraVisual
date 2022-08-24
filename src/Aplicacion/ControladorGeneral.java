@@ -3,7 +3,10 @@ package Aplicacion;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.File;
 
 
 /**
@@ -31,8 +34,9 @@ public class ControladorGeneral {
             escenario.setScene(escena);
             escenario.toFront();
             escenario.show();
-            if(getContenedor().getFxmlLoader().getController() instanceof ControladorGeneral){
-                ((ControladorGeneral)getContenedor().getFxmlLoader().getController()).onLoad();
+            if(getContenedor().getFxmlLoader().getController() instanceof ControladorJuego){
+                ((ControladorJuego)getContenedor().getFxmlLoader().getController()).cargarRosco();
+                ((ControladorJuego)getContenedor().getFxmlLoader().getController()).preguntar();
             }
 
         } catch (Exception e) {
@@ -40,10 +44,11 @@ public class ControladorGeneral {
         }
     }
 
-    public void onLoad(){
-
+    protected Image avatarJugador(Jugador jugador){
+        File file = new File(jugador.getAvatar());
+        Image image = new Image(file.toURI().toString());
+        return image;
     }
-
 
     public Contenedor getContenedor() {
         return contenedor;

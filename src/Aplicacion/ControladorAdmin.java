@@ -77,17 +77,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         } else {
             aciertos.setText("MEDIA DE ACIERTOS: " + 0);
         }
-        File file = null;
-        switch (jugador.getAvatar()) {
-            case 0:
-                file = new File("Resources/ImagenesAvatares/AvatarHombre.png");
-                break;
-            case 1:
-                file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
-                break;
-        }
-        Image image = new Image(file.toURI().toString());
-        avatar.setImage(image);
+        avatar.setImage(avatarJugador(jugador));
         editar.setVisible(true);
         eliminar.setVisible(true);
     }
@@ -102,12 +92,12 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void crearJugador() throws IOException {
-        String nombre = creacionNombre.getText();
-        int avatar;
+        String nombre = creacionNombre.getText(); //TODO Mostrar error al crear nombre vacío
+        String avatar;
         if ((creacionAvatar.getImage().getUrl().endsWith("Resources/ImagenesAvatares/AvatarMujer.png"))) {
-            avatar = 1;
+            avatar = "Resources/ImagenesAvatares/AvatarMujer.png";
         } else {
-            avatar = 0;
+            avatar = "Resources/ImagenesAvatares/AvatarHombre.png";
         }
         Jugador jugadorNuevo;
         if (edicion) {
@@ -131,17 +121,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     private void editarJugador() {
         jugador = jugadorSeleccionado();
         mostrarMenuCreacionJugador();
-        File file = null;
-        switch (jugador.getAvatar()) {
-            case 0:
-                file = new File("Resources/ImagenesAvatares/Hombre.png");
-                break;
-            case 1:
-                file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
-                break;
-        }
-        Image image = new Image(file.toURI().toString());
-        creacionAvatar.setImage(image);
+        creacionAvatar.setImage(avatarJugador(jugador));
         creacionNombre.setText(jugador.getNombre());
         edicion=true;
     }

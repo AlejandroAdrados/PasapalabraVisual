@@ -24,6 +24,8 @@ public class inicioAplicacion extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         contenedor = new Contenedor();
+        Ficheros gestorFicheros = new Ficheros();
+        contenedor.setGestorFicheros(gestorFicheros);
         FXMLLoader fxmlLoader = new FXMLLoader(inicioAplicacion.class.getClassLoader().getResource("Vistas/vistaMenu.fxml"));
         contenedor.setEscenario(stage);
         contenedor.setFxmlLoader(fxmlLoader);
