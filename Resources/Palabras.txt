@@ -11,76 +11,116 @@ B|Boda|Ceremonia mediante la cual se unen en matrimonio dos personas, y fiesta c
 C|Cámara|Aparato para tomar fotos/
 C|Criar|Dicho de una cosa o de un ser vivo: Originar, producir algo/
 C|Cesta|Recipiente tejido con mimbres, juncos, cañas, varillas de sauce u otra madera flexible, que sirve para recoger o llevar ropas, frutas y otros objetos/
+C|Crustáceo|Que tiene costra/
 C|Cortar|Dividir algo o separar sus partes con algún instrumento cortante#
 D|Dividir|Partir o separar algo en partes/
+D|Divino|Perteneciente o relativo a Dios/
+D|Driblar|En el fútbol y otros deportes, regatear (‖ hacer regates)/
 D|Doblar|Aumentar algo, haciéndolo otro tanto más de lo que era/
 D|Descanso|Parada de un trabajo o esfuerzo#
 E|Empadronar|Censar/
+E|Etimología|Origen de las palabras, razón de su existencia, de su significación y de su forma/
+E|Evolucionar|Dicho de un organismo o de otra cosa: Desenvolverse o desarrollarse, pasando de un estado a otro/
 E|Eructar|Expeler con ruido por la boca los gases del estómago/
 E|Espantar|Producir miedo#
 F|Flotar|Antónimo de hundirse/
+F|Fallar|No acertar algo, o equivocarse en ello/
+F|Fijar|Hincar, clavar, asegurar un cuerpo en otro/
 F|Firmar|Dicho de una persona: Poner su firma/
 F|Fusión|Unión#
 G|Girar|Mover una figura o un objeto alrededor de un punto o de un eje/
+G|Gritar|Levantar la voz más de lo acostumbrado/
 G|Gafas|Anteojos/
+G|Gramo|Unidad de masa del sistema internacional, equivalente a una milésima parte de 1 kilogramo. (Símb. g)/
 G|Gasto|Consumo#
 H|Hostigar|Dar golpes con una fusta, un látigo u otro instrumento, para hacer mover, juntar o dispersar/
+H|Humedad|Agua de que está impregnado un cuerpo o que, vaporizada, se mezcla con el aire/
 H|Hotel|Establecimiento de hostelería capaz de alojar con comodidad a huéspedes o viajeros/
+H|Hasta|Indica el límite final de una trayectoria en el espacio o en el tiempo/
 H|Hablar|Pronunciar sonidos/
 H|Hermoso|Gran belleza#
 I|Introducción|Acción y efecto de introducir o introducirse/
 I|Ingobernable|Que no se puede gobernar/
+I|Incómodo|Que carece de comodidad/
+I|Ira|Sentimiento de indignación que causa enojo/
 I|Insólito|Que no sucede casi nunca#
 J|Jamón|Puede ser de pata negra/
-J|Jazmín|Arbusto de la familia de las oleáceas, con tallos verdes, delgados, flexibles, algo
-trepadores y de cuatro a seis metros de longitud, hojas alternas y compuestas de hojuelas
-estrechas, en número impar, duras, enteras y lanceoladas, flores en el extremo de los tallos,
-pedunculadas, blancas, olorosas, de cinco pétalos soldados por la parte inferior a manera de e
-mbudo, y fruto en baya negra y esférica. Es originario de Persia y
-se cultiva en los jardines por el excelente olor de sus flores, que utiliza la perfumería/
+J|Jeta|Boca saliente por su configuración o por tener los labios muy abultados/
+J|Jazmín|Arbusto de la familia de las oleáceas, con tallos verdes, delgados y flexibles/
+J|Jarrón|Pieza arquitectónica en forma de jarro, con que se decoran edificios, galerías, escaleras, jardines, etc., puesta casi siempre sobre un pedestal y como adorno de remate/
 J|Jardinero|Persona que trabaja en un jardín#
 L|Libro|Conjunto de muchas hojas de papel u otro material semejante que, encuadernadas, forman un volumen/
 L|Literato|Dicho de una persona: Versada en literatura/
+L|Lírico|Perteneciente o relativo a la lira, a la poesía apropiada para el canto o a la lírica/
+L|Lidiar|Burlar al toro esquivando sus acometidas según las reglas de la tauromaquia hasta darle muerte/
 L|Luminoso|Lo contrario a oscuro#
 M|Mesa|Tiene 4 patas y sirve para apoyar cosas/
 M|Maizal|Tierra sembrada de maíz/
+M|Miedo|Angustia por un riesgo o daño real o imaginario/
+M|Mirada|Modo de mirar, expresión de los ojos/
 M|Macarrones|Pasta con forma de cilindros#
 N|Navidad|Día en el que nace el niño Jesús/
+N|Nirvana|En algunas religiones de la India, estado resultante de la liberación de los deseos, de la consciencia individual y de la reencarnación, que se alcanza mediante la meditación y la iluminación/
+N|Nariz|Órgano prominente del rostro humano, entre la frente y la boca, con dos orificios, que forma parte del aparato respiratorio/
 N|Nacarado|Dicho de un color o del brillo: Que tiene irisaciones, como el nácar/
 N|Nada|Inexistencia total o carencia absoluta de cualquier ser#
 Ñ|Ñapa|Añadidura, especialmente la que se da como propina o regalo/
+Ñ|Ña|Tratamiento que se antepone al nombre de una mujer/
 Ñ|Ñu|Mamífero rumiante africano de la familia de los antílopes, de color pardo grisáceo, cuya cabeza recuerda la de un toro/
+Ñ|Ñeco|Dicho de una persona: Que ha perdido un brazo o una mano, o los tiene inutilizados/
 Ñ|Ñoqui|Masa hecha con patatas mezcladas con harina de trigo, mantequilla, leche, huevo y queso rallado, dividida en trocitos, que se cuecen en agua hirviendo con sal#
 O|Ostentar|Mostrar o hacer patente algo/
+O|Oblicuo|Que se desvía de la línea horizontal o vertical/
 O|Oasis|Sitio con vegetación y a veces con manantiales, que se encuentra aislado en los desiertos arenosos de África y Asia/
+O|Óseo|De la naturaleza del hueso/
 O|Obcecar|Cegar, deslumbrar u ofuscar#
 P|Pachanga|Partido informal de fútbol, baloncesto u otros deportes/
 P|Pilotar|Dirigir un buque, especialmente a la entrada o salida de puertos, barras/
+P|Pifia|Error, descuido, paso o dicho desacertado/
+P|Pavor|Temor, con espanto o sobresalto/
 P|Pitar|Dar una pitada a alguien, manifestar desagrado contra él silbándole#
 Q|Queso|Producto obtenido por maduración de la cuajada de la leche con características propias para cada uno de los tipos según su origen o método de fabricación/
 Q|Quieto|Que no tiene o no hace movimiento/
+Q|Quad|Vehículo todoterreno de cuatro ruedas similar a una motocicleta/
+Q|Quiasma|Entrecruzamiento de estructuras orgánicas, como el formado por los nervios ópticos/
 Q|Querer|Canción de Manuel Carrasco "Qué bonito es ..."#
 R|Rumba|Palo flamenco de ritmo alegre/
+R|Retiro|Lugar apartado y distante del concurso y bullicio de la gente/
+R|Rabal|Barrio exterior o extremo de una ciudad, arrabal/
 R|Rata|Mamífero roedor, de unos 36 cm desde el hocico a la extremidad de la cola, muy larga, con cabeza pequeña, hocico puntiagudo, orejas tiesas, cuerpo grueso, patas cortas, pelaje gris oscuro, muy fecundo y voraz/
 R|Risa|Movimiento de la boca y otras partes del rostro, que demuestra alegría#
+S|Suceso|Cosa que sucede, especialmente cuando es de alguna importancia/
 S|Seta|Cualquier especie de hongo, comestible o no, con forma de sombrilla, sostenida por un pedicelo/
 S|Sábado|Sexto día de la semana, que es festivo para el judaísmo y otras confesiones religiosas/
+S|Sentimiento|Estado afectivo del ánimo/
 S|Seguir|Ir después o detrás de alguien#
 T|Taco|Pedazo de madera, metal u otra materia, corto y grueso, que se encaja en algún hueco/
 T|Tibia|Hueso principal y anterior de la pierna, que se articula con el fémur, el peroné y el astrágalo/
+T|Triangular|Ligar por medio de triángulos ciertos puntos determinados de una comarca para levantar el plano de ella/
+T|Truncar|Cortar una parte a algo/
 T|Truco|Cada una de las mañas o habilidades que se adquieren en el ejercicio de un arte, oficio o profesión#
 U|Untar|Aplicar y extender superficialmente aceite u otra materia pingüe sobre algo/
+U|Utensilio|Objeto fabricado que se destina a un uso manual y doméstico/
 U|Ubicación|Acción y efecto de ubicar/
+U|Usar|Hacer servir una cosa para algo/
 U|Ucraniano|Natural de Ucrania, país de Europa#
 V|Vivero|Terreno adonde se trasplantan desde la almáciga los árboles pequeños, para trasponerlos, después de recriados, a su lugar definitivo/
+V|Vaca|Hembra del toro/
+V|Ver|Percibir con los ojos algo mediante la acción de la luz/
 V|Vida|Fuerza o actividad esencial mediante la que obra el ser que la posee/
 V|Volar|Ir o moverse por el aire, sosteniéndose con las alas#
 X|Xenofobia|Fobia a lo extranjero o a los extranjeros/
+X|Xeca|Pan poco refinado/
+X|Xantina|Compuesto derivado de la purina, que tiene efectos estimulantes sobre el sistema nervioso y el corazón, diuréticos y broncodilatadores; p. ej., la cafeína, la teofilina y la teobromina/
 X|Xilófono|Instrumento musical de percusión formado por láminas generalmente de madera, ordenadas horizontalmente según su tamaño y sonido, que se hacen sonar golpeándolas con dos baquetas/
 X|Xilema|Tejido leñoso de las plantas vasculares, que transporta principalmente agua y minerales de una parte a otra de estos organismos#
 Y|Yema|Brote embrionario de los vegetales constituido por hojas o por esbozos foliares a modo de botón escamoso del que se desarrollarán ramas, hojas y flores/
+Y|Yodado|Que contiene yodo/
 Y|Yogur|Producto lácteo obtenido mediante reducción por evaporación y fermentación bacteriana de la leche/
+Y|Yegua|Hembra del caballo/
 Y|Ya|Inmediatamente, ahora mismo#
 Z|Zambullir|Meter debajo del agua con ímpetu o de golpe/
+Z|Zoo|parque zoológico/
+Z|Zote|Ignorante, torpe y muy tardo en aprender/
 Z|Zodiaco|Zona o faja celeste por cuyo centro pasa la eclíptica y que comprende los doce signos, casas o constelaciones que recorre el Sol en su curso anual aparente, a saber, Aries, Tauro, Géminis, Cáncer, Leo, Virgo, Libra, Escorpión, Sagitario, Capricornio, Acuario y Piscis/
 Z|Zócalo| Cuerpo inferior de un edificio u obra, que sirve para elevar los basamentos a un mismo nivel#
