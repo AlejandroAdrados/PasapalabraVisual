@@ -12,6 +12,19 @@ import java.util.StringTokenizer;
  */
 public class GestorPalabras {
 
+    private String contenido;
+
+    public GestorPalabras() throws IOException {
+        BufferedReader lector = new BufferedReader(new FileReader("Resources/Palabras.txt"));
+        StringBuilder cadena = new StringBuilder();
+        String line = null;
+        while ((line = lector.readLine()) != null) {
+            cadena.append(line);
+        }
+        lector.close();
+        contenido = cadena.toString();
+    }
+
     /**
      * A partir de una letra produce una definición aleatoria con su respuesta
      * @param numLetra
@@ -24,26 +37,16 @@ public class GestorPalabras {
         Palabra palabra = null;
         int i;
         int j;
-        char letra = (char) (96 + numLetra);
-        File archivoPalabras = new File("Resources/Palabras.txt");
-        BufferedReader lector = new BufferedReader(new FileReader("Resources/Palabras.txt"));
-        StringBuilder cadena = new StringBuilder();
-        String line = null;
-        while ((line = lector.readLine()) != null) {
-            cadena.append(line);
-        }
-        lector.close();
-        String contenido = cadena.toString();
-        ArrayList<Palabra> tokens = new ArrayList<>();
         StringTokenizer tokenizer = new StringTokenizer(contenido, "#"); //Cambia de letra
         for (i = 0; i < numLetra; i++) {  //Solo se seleccionan las palabras de esa letra
             palabrasConLetra = tokenizer.nextToken();
         }
-        StringTokenizer tokenizer2 = new StringTokenizer(palabrasConLetra, "/"); //Cambia palabras en la misma letra
+        StringTokenizer tokenizer2 = new StringTokenizer(palabrasConLetra, "***"); //Cambia palabras en la misma letra
+        // Hay palabras vacías. Para buscarlas buscar símbolo /
         int numeroPalabrasLetra = tokenizer2.countTokens();
-        //System.out.println("Palabras en letra " + letra + " = " + numeroPalabrasLetra);
-        int random = (int) ((Math.random()*10+1) % numeroPalabrasLetra);
-        //System.out.println("Numero aleatorio = " + random);
+        System.out.println("Palabras en letra " + numLetra + " = " + numeroPalabrasLetra);
+        int random = (int) ((Math.random()*10000+1) % numeroPalabrasLetra);
+        System.out.println("Numero aleatorio = " + random);
         for (j=0; j <= random; j++){
             palabraConLetra = tokenizer2.nextToken();
         }
