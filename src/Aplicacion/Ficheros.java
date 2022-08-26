@@ -6,20 +6,20 @@ import java.util.ArrayList;
 /**
  * Clase que controla el manejo de ficheros del programa
  */
-public class Ficheros implements Serializable{
+public class Ficheros implements Serializable {
     private ArrayList<Jugador> jugadores;
     private File ficheroJugadores = new File("Resources/Jugadores.txt");
 
     /**
      * Método que carga los jugadores del fichero jugadores.txt en una lista.
+     *
      * @throws IOException
      * @throws ClassNotFoundException
      */
     public void leerJugadores() throws IOException, ClassNotFoundException {
-        if (!ficheroJugadores.exists()){
+        if (!ficheroJugadores.exists()) {
             jugadores = new ArrayList<>();
-        }
-        else {
+        } else {
             ObjectInputStream leyendoFichero = new ObjectInputStream(
                     new FileInputStream("Resources/Jugadores.txt"));
             jugadores = (ArrayList<Jugador>) leyendoFichero.readObject();
@@ -29,34 +29,42 @@ public class Ficheros implements Serializable{
 
     /**
      * Método que guarda un jugador nuevo en el fichero jugadores.txt (Si no existe el fichero lo crea).
+     *
      * @param jugador
      * @throws IOException
      */
     public void guardarJugador(Jugador jugador) throws IOException {
         jugadores.add(jugador);
-        if (!ficheroJugadores.exists()){
+        if (!ficheroJugadores.exists()) {
             ficheroJugadores.createNewFile();
         }
         ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
-                new FileOutputStream("Resources/Jugadores.txt") );
+                new FileOutputStream("Resources/Jugadores.txt"));
         escribiendoFichero.writeObject(jugadores);
         escribiendoFichero.close();
     }
 
     /**
      * Método que elimina un jugador en concreto del fichero jugadores.txt
+     *
      * @param jugador
      * @throws IOException
      */
     public void eliminarJugador(Jugador jugador) throws IOException {
         jugadores.remove(jugador);
         ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
-                new FileOutputStream("Resources/Jugadores.txt") );
+                new FileOutputStream("Resources/Jugadores.txt"));
         escribiendoFichero.writeObject(jugadores);
         escribiendoFichero.close();
     }
 
-    public Jugador buscarJugador(String nombreJugador){
+    /**
+     * Método que a partir del nombre del jugador devuelve el tipo Jugador.
+     *
+     * @param nombreJugador
+     * @return
+     */
+    public Jugador buscarJugador(String nombreJugador) {
         for (Jugador jugador : jugadores) {
             if (jugador.getNombre().equals(nombreJugador)) {
                 return jugador;

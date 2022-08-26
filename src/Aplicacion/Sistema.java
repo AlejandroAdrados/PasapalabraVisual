@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
-*Clase que controla la operativa general del programa
+ * Clase que controla la operativa general del programa
  */
-public class Sistema{
+public class Sistema {
     private ArrayList<Jugador> jugadores;
     private Jugador jugador1, jugador2, jugadorActual;
     private ArrayList<Palabra> palabrasJ1 = new ArrayList<>();
@@ -20,21 +20,22 @@ public class Sistema{
      *
      * @param ficheros
      */
-    public Sistema(Ficheros ficheros, Jugador j1, Jugador j2){
-        this.ficheros=ficheros;
-        jugador1= j1;
+    public Sistema(Ficheros ficheros, Jugador j1, Jugador j2) {
+        this.ficheros = ficheros;
+        jugador1 = j1;
         jugador2 = j2;
         jugadorActual = jugador1;
-        palabrasJugadorActual=palabrasJ1;
+        palabrasJugadorActual = palabrasJ1;
     }
 
     /**
      * Método que inicializa el rosco de cada jugador y lo guarda en su respectiva lista
+     *
      * @throws IOException
      */
     public void cargarRosco() throws IOException {
         GestorPalabras gestorPalabras = new GestorPalabras();
-        for(int i=1; i<=25; i++){
+        for (int i = 1; i <= 25; i++) {
             palabrasJ1.add(gestorPalabras.darDefinicion(i));
             palabrasJ2.add(gestorPalabras.darDefinicion(i));
         }
@@ -43,32 +44,33 @@ public class Sistema{
     /**
      * Método que elimina la palabra respondida por el usuario de su respectiva lista
      */
-    public void palabraRespondida(){
+    public void palabraRespondida() {
         palabrasJugadorActual.remove(jugadorActual.getIndice());
         jugadorActual.aumentarLetrasRespondidas();
     }
 
     /**
      * Método que cambia el turno entre los jugadores si es posible
+     *
      * @return Boolean si se ha cambiado el turno o no
      */
-   public Boolean cambiarTurno(){
-        if(jugadorActual.equals(jugador1) && jugador2.getLetrasRespondidas()<25){
+    public Boolean cambiarTurno() {
+        if (jugadorActual.equals(jugador1) && jugador2.getLetrasRespondidas() < 25) {
             jugadorActual = jugador2;
             palabrasJugadorActual = palabrasJ2;
             return true;
-        }else if(jugadorActual.equals(jugador2) && jugador1.getLetrasRespondidas()<25){
+        } else if (jugadorActual.equals(jugador2) && jugador1.getLetrasRespondidas() < 25) {
             jugadorActual = jugador1;
             palabrasJugadorActual = palabrasJ1;
             return true;
-        }else{
-            if(jugador1.getLetrasRespondidas()==25 && jugador2.getLetrasRespondidas()==25){
+        } else {
+            if (jugador1.getLetrasRespondidas() == 25 && jugador2.getLetrasRespondidas() == 25) {
                 System.out.println("PARTIDA TERMINADA");
                 System.exit(0);
             }
             return false;
         }
-   }
+    }
 
     public Jugador getJugador1() {
         return jugador1;
@@ -80,6 +82,10 @@ public class Sistema{
 
     public Jugador getJugadorActual() {
         return jugadorActual;
+    }
+
+    public ArrayList<Palabra> getPalabrasJugadorActual() {
+        return palabrasJugadorActual;
     }
 
     //Métodos antiguos
@@ -146,8 +152,4 @@ public class Sistema{
         } catch (ClassNotFoundException ex) {
             System.err.println(ex);
     } }*/
-
-    public ArrayList<Palabra> getPalabrasJugadorActual() {
-        return palabrasJugadorActual;
-    }
 }

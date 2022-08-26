@@ -18,6 +18,7 @@ public class Jugador implements Serializable {
 
     /**
      * Constructor de la clase cuando un jugador se crea desde el inicio.
+     *
      * @param nombre
      * @param avatar
      */
@@ -28,6 +29,7 @@ public class Jugador implements Serializable {
 
     /**
      * Constructor de la clase cuando se edita un jugador (partidasJugadas y puntosTotales se transfieren del original)
+     *
      * @param nombre
      * @param avatar
      * @param partidasJugadas
@@ -68,11 +70,13 @@ public class Jugador implements Serializable {
         return letrasRespondidas;
     }
 
-    public void aumentarLetrasRespondidas(){
+    public void aumentarLetrasRespondidas() {
         letrasRespondidas++;
     }
 
-    public void aumentarIndice(){indice++;}
+    public void aumentarIndice() {
+        indice++;
+    }
 
     public int getIndice() {
         return indice;
@@ -94,18 +98,11 @@ public class Jugador implements Serializable {
         return puntosTotales;
     }
 
-    public void aumentarPartidasJugadas(){
+    public void aumentarPartidasJugadas() {
         partidasJugadas++;
     }
-    public void sumarPuntosTotales(){
-        puntosTotales+=puntos;
-    }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void sumarPuntosTotales() {
+        puntosTotales += puntos;
     }
 }

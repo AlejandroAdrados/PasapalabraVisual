@@ -28,7 +28,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
 
     @FXML
     private AnchorPane paneNormal, paneCreacion, paneInvisible, paneInvisible2; //paneCreacion contiene los items de creación o edición de jugadores
-    //paneInvisible sirve para volver al paneNormal desde paneCreacion
+    //paneInvisible sirve para volver al paneNormal desde paneCreacion //paneInvisible2 oculta el mensaje de error
     @FXML
     private ImageView avatar, creacionAvatar, editar, eliminar;
     @FXML
@@ -99,9 +99,9 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     @FXML
     private void crearJugador() throws IOException {
         String nombre = creacionNombre.getText();
-        if(nombre.isEmpty()){
+        if (nombre.isEmpty()) {
             mostrarError();
-        }else {
+        } else {
             String avatar;
             if ((creacionAvatar.getImage().getUrl().endsWith("Resources/ImagenesAvatares/AvatarMujer.png"))) {
                 avatar = "Resources/ImagenesAvatares/AvatarMujer.png";
@@ -125,7 +125,6 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
 
     /**
      * Método que lanza el menú de creación de jugador con los datos del jugador actual y lo elimina para crear uno nuevo
-     *
      */
     @FXML
     private void editarJugador() {
@@ -133,7 +132,7 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         mostrarMenuCreacionJugador();
         creacionAvatar.setImage(avatarJugador(jugador));
         creacionNombre.setText(jugador.getNombre());
-        edicion=true;
+        edicion = true;
     }
 
     /**
@@ -292,8 +291,11 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         cargarVista("Vistas/vistaMenu.fxml");
     }
 
+    /**
+     * Método que oculta el mensaje de error.
+     */
     @FXML
-    private void volverError(){
+    private void volverError() {
         textoEscribaNombre.setVisible(true);
         textoSeleccioneAvatar.setVisible(true);
         creacionAvatar.setVisible(true);
@@ -303,7 +305,11 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
         error.setVisible(false);
         paneInvisible2.setMouseTransparent(true);
     }
-    private void mostrarError(){
+
+    /**
+     * Método que muestra el mensaje de error.
+     */
+    private void mostrarError() {
         textoEscribaNombre.setVisible(false);
         textoSeleccioneAvatar.setVisible(false);
         creacionAvatar.setVisible(false);

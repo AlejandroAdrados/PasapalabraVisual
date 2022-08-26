@@ -27,6 +27,7 @@ public class GestorPalabras {
 
     /**
      * A partir de una letra produce una definición aleatoria con su respuesta
+     *
      * @param numLetra
      * @return
      * @throws IOException
@@ -45,9 +46,9 @@ public class GestorPalabras {
         // Hay palabras vacías. Para buscarlas buscar símbolo /
         int numeroPalabrasLetra = tokenizer2.countTokens();
         System.out.println("Palabras en letra " + numLetra + " = " + numeroPalabrasLetra);
-        int random = (int) ((Math.random()*13460+1) % numeroPalabrasLetra);
+        int random = (int) ((Math.random() * 13460 + 1) % numeroPalabrasLetra);
         System.out.println("Numero aleatorio = " + random);
-        for (j=0; j <= random; j++){
+        for (j = 0; j <= random; j++) {
             palabraConLetra = tokenizer2.nextToken();
         }
         StringTokenizer tokenizer3 = new StringTokenizer(palabraConLetra, "|"); //Divide letra, solucion, enunciado

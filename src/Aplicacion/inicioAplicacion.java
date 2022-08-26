@@ -15,6 +15,7 @@ public class inicioAplicacion extends Application {
 
     /**
      * Método que carga la información necesaria para el inicio de la primera vista.
+     *
      * @param stage the primary stage for this application, onto which
      *              the application scene can be set.
      *              Applications may create other stages, if needed, but they will not be
@@ -30,7 +31,7 @@ public class inicioAplicacion extends Application {
         contenedor.setEscenario(stage);
         contenedor.setFxmlLoader(fxmlLoader);
         Scene escena = new Scene(fxmlLoader.load(), 1366, 768);
-        ((ControladorGeneral)fxmlLoader.getController()).setContenedor(contenedor);
+        ((ControladorGeneral) fxmlLoader.getController()).setContenedor(contenedor);
         stage.setFullScreen(false);
         stage.setResizable(false);
         stage.setTitle("PASAPALABRA");

@@ -2,7 +2,7 @@ package Aplicacion;
 
 /**
  * Clase que almacena la letra, el enunciado y la palabra en cuestión
-*/
+ */
 public class Palabra {
     private String letra;
     private String pregunta;

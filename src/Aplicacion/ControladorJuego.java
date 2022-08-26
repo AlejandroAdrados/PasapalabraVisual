@@ -21,7 +21,7 @@ import java.util.ResourceBundle;
  */
 public class ControladorJuego extends ControladorGeneral implements Initializable { //TODO Sumar partidas totales y puntos totales
     @FXML
-    private Label pregunta,letra,turno,puntos;
+    private Label pregunta, letra, turno, puntos;
     @FXML
     private TextField respuesta;
     @FXML
@@ -34,7 +34,11 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
     private ArrayList<Node> listaElementosJ1 = new ArrayList<>();
     private ArrayList<Node> listaElementosJ2 = new ArrayList<>();
 
-    public void cargarRosco(){
+
+    /**
+     * Inicializa el juego y carga todas las palabras del rosco en cada jugador.
+     */
+    public void cargarRosco() {
         turno.setText("Turno de " + getContenedor().getSistema().getJugadorActual().getNombre());
         avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
         try {
@@ -43,8 +47,10 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
             System.out.println("Error al cargar rosco");
         }
     }
+
     /**
      * Método que escribe en la interfaz gráfica la pregunta
+     *
      * @throws IOException
      */
     @FXML
@@ -54,29 +60,28 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
         avatar.setVisible(true);
         imagenTurno.setVisible(true);
         pasapalabra.setVisible(true);
-        if(getContenedor().getSistema().getJugadorActual().getIndice()<getContenedor().getSistema().getPalabrasJugadorActual().size() && !getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()){
-        }else if(!getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()){
+        if (getContenedor().getSistema().getJugadorActual().getIndice() < getContenedor().getSistema().getPalabrasJugadorActual().size() && !getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()) {
+        } else if (!getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()) {
             getContenedor().getSistema().getJugadorActual().setIndice(0);
-        }else{ //Lista vacía => Jugador ha terminado
+        } else { //Lista vacía => Jugador ha terminado
             cambiarTurno();
-            if(getContenedor().getSistema().getJugadorActual().getIndice()<getContenedor().getSistema().getPalabrasJugadorActual().size() && !getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()){
-            }else if(!getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()) {
+            if (getContenedor().getSistema().getJugadorActual().getIndice() < getContenedor().getSistema().getPalabrasJugadorActual().size() && !getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()) {
+            } else if (!getContenedor().getSistema().getPalabrasJugadorActual().isEmpty()) {
                 getContenedor().getSistema().getJugadorActual().setIndice(0);
-            }
-            else{
+            } else {
                 cambiarTurno(); //Ambos jugadores han terminado
             }
         }
-        palabra=getContenedor().getSistema().getPalabrasJugadorActual().get(getContenedor().getSistema().getJugadorActual().getIndice());
+        palabra = getContenedor().getSistema().getPalabrasJugadorActual().get(getContenedor().getSistema().getJugadorActual().getIndice());
         letra.setText("Empieza por " + palabra.getLetra());
         pregunta.setText(palabra.getPregunta());
         respuesta.setText("");
         puntos.setText(getContenedor().getSistema().getJugadorActual().getPuntos() + "");
     }
 
-
     /**
      * Método que se ejecuta tras dar al botón responder
+     *
      * @throws IOException
      */
     @FXML
@@ -96,6 +101,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
 
     /**
      * Método que se ejecuta tras dar al botón de pasapalabra
+     *
      * @throws IOException
      */
     @FXML
@@ -108,14 +114,14 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
     /**
      * Cambia el turno del jugador, cambiando avatar y rosco de cada uno
      */
-    private void cambiarTurno(){
-        if (getContenedor().getSistema().cambiarTurno()){
-            if(getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())){
+    private void cambiarTurno() {
+        if (getContenedor().getSistema().cambiarTurno()) {
+            if (getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())) {
                 listaElementosJ1.clear();
                 listaElementosJ1.addAll(pane2.getChildren());
                 pane2.getChildren().clear();
                 pane2.getChildren().addAll(listaElementosJ2);
-            }else{
+            } else {
                 listaElementosJ2.clear();
                 listaElementosJ2.addAll(pane2.getChildren());
                 pane2.getChildren().clear();
@@ -131,14 +137,15 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
 
     /**
      * Cambia el color de la letra dependiendo de acierto o error
+     *
      * @param acierto
      */
-    private void cambiarLetra(Boolean acierto){
+    private void cambiarLetra(Boolean acierto) {
         String letra = palabra.getLetra();
         File archivo;
-        if(acierto) {
+        if (acierto) {
             archivo = new File("Resources/LETRASPASAPALABRA/" + letra + "VERDE.png");
-        } else{
+        } else {
             archivo = new File("Resources/LETRASPASAPALABRA/" + letra + "ROJO.png");
         }
         Image image = new Image(archivo.toURI().toString());
@@ -153,6 +160,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
 
     /**
      * Inicializa las listas de elementos de ambos jugadores al rosco vacío.
+     *
      * @param location  The location used to resolve relative paths for the root object, or
      *                  {@code null} if the location is not known.
      * @param resources The resources used to localize the root object, or {@code null} if
@@ -168,7 +176,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
      */
     @FXML
-    private void entrarImagen(){
+    private void entrarImagen() {
         File file = new File("Resources/ImagenesJuego/PasapalabraDentro.png");
         Image image = new Image(file.toURI().toString());
         pasapalabra.setImage(image);
@@ -178,7 +186,7 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
      */
     @FXML
-    public void salirImagen(){
+    public void salirImagen() {
         File file = new File("Resources/ImagenesJuego/PasapalabraFuera.png");
         Image image = new Image(file.toURI().toString());
         pasapalabra.setImage(image);
