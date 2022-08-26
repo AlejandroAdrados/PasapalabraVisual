@@ -45,9 +45,9 @@ public class GestorPalabras {
         StringTokenizer tokenizer2 = new StringTokenizer(palabrasConLetra, "***"); //Cambia palabras en la misma letra
         // Hay palabras vacías. Para buscarlas buscar símbolo /
         int numeroPalabrasLetra = tokenizer2.countTokens();
-        System.out.println("Palabras en letra " + numLetra + " = " + numeroPalabrasLetra);
+        //System.out.println("Palabras en letra " + numLetra + " = " + numeroPalabrasLetra);
         int random = (int) ((Math.random() * 13460 + 1) % numeroPalabrasLetra);
-        System.out.println("Numero aleatorio = " + random);
+        //System.out.println("Numero aleatorio = " + random);
         for (j = 0; j <= random; j++) {
             palabraConLetra = tokenizer2.nextToken();
         }
