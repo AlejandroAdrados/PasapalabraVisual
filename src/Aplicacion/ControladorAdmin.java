@@ -11,6 +11,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.shape.Polygon;
 import javafx.scene.text.Font;
 
 import java.io.File;
@@ -25,14 +27,18 @@ import java.util.ResourceBundle;
 public class ControladorAdmin extends ControladorGeneral implements Initializable {
 
     @FXML
-    private AnchorPane paneNormal, paneCreacion, paneInvisible; //paneCreacion contiene los items de creación o edición de jugadores
+    private AnchorPane paneNormal, paneCreacion, paneInvisible, paneInvisible2; //paneCreacion contiene los items de creación o edición de jugadores
     //paneInvisible sirve para volver al paneNormal desde paneCreacion
     @FXML
     private ImageView avatar, creacionAvatar, editar, eliminar;
     @FXML
-    private Label nombre, jugadas, aciertos;
+    private Label nombre, jugadas, aciertos, textoEscribaNombre, textoSeleccioneAvatar;
     @FXML
     private TextField creacionNombre;
+    @FXML
+    private Polygon flechaIzquierda, flechaDerecha;
+    @FXML
+    private VBox error;
     private Ficheros gestorFicheros;
     private ArrayList<Jugador> jugadores;
     private String nombreJugadorSeleccionado;
@@ -92,25 +98,29 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
      */
     @FXML
     private void crearJugador() throws IOException {
-        String nombre = creacionNombre.getText(); //TODO Mostrar error al crear nombre vacío
-        String avatar;
-        if ((creacionAvatar.getImage().getUrl().endsWith("Resources/ImagenesAvatares/AvatarMujer.png"))) {
-            avatar = "Resources/ImagenesAvatares/AvatarMujer.png";
-        } else {
-            avatar = "Resources/ImagenesAvatares/AvatarHombre.png";
+        String nombre = creacionNombre.getText();
+        if(nombre.isEmpty()){
+            mostrarError();
+        }else {
+            String avatar;
+            if ((creacionAvatar.getImage().getUrl().endsWith("Resources/ImagenesAvatares/AvatarMujer.png"))) {
+                avatar = "Resources/ImagenesAvatares/AvatarMujer.png";
+            } else {
+                avatar = "Resources/ImagenesAvatares/AvatarHombre.png";
+            }
+            Jugador jugadorNuevo;
+            if (edicion) {
+                jugadorNuevo = new Jugador(nombre, avatar, jugador.getPartidasJugadas(), jugador.getPuntosTotales());
+                gestorFicheros.eliminarJugador(jugador);
+                edicion = false;
+            } else {
+                jugadorNuevo = new Jugador(nombre, avatar);
+            }
+            gestorFicheros.guardarJugador(jugadorNuevo);
+            paneCreacion.setVisible(false);
+            paneNormal.setOpacity(1);
+            cargarVista("Vistas/vistaAdmin.fxml");
         }
-        Jugador jugadorNuevo;
-        if (edicion) {
-            jugadorNuevo = new Jugador(nombre, avatar, jugador.getPartidasJugadas(), jugador.getPuntosTotales());
-            gestorFicheros.eliminarJugador(jugador);
-            edicion=false;
-        } else {
-            jugadorNuevo = new Jugador(nombre, avatar);
-        }
-        gestorFicheros.guardarJugador(jugadorNuevo);
-        paneCreacion.setVisible(false);
-        paneNormal.setOpacity(1);
-        cargarVista("Vistas/vistaAdmin.fxml");
     }
 
     /**
@@ -173,7 +183,6 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
             }
             hayJugadores = true;
         }
-
         lista.setPrefHeight(320);
         lista.setPrefWidth(341);
         lista.setLayoutX(175);
@@ -281,5 +290,27 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     @FXML
     private void menu() {
         cargarVista("Vistas/vistaMenu.fxml");
+    }
+
+    @FXML
+    private void volverError(){
+        textoEscribaNombre.setVisible(true);
+        textoSeleccioneAvatar.setVisible(true);
+        creacionAvatar.setVisible(true);
+        flechaDerecha.setVisible(true);
+        flechaIzquierda.setVisible(true);
+        creacionNombre.setVisible(true);
+        error.setVisible(false);
+        paneInvisible2.setMouseTransparent(true);
+    }
+    private void mostrarError(){
+        textoEscribaNombre.setVisible(false);
+        textoSeleccioneAvatar.setVisible(false);
+        creacionAvatar.setVisible(false);
+        flechaDerecha.setVisible(false);
+        flechaIzquierda.setVisible(false);
+        creacionNombre.setVisible(false);
+        error.setVisible(true);
+        paneInvisible2.setMouseTransparent(false);
     }
 }

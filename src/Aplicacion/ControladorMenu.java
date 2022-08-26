@@ -1,13 +1,14 @@
 package Aplicacion;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 import java.awt.*;
 import java.io.File;
@@ -19,9 +20,15 @@ import java.io.IOException;
 public class ControladorMenu extends ControladorGeneral {
 
     @FXML
+    private Button botonEmpezar;
+    @FXML
+    private Label tituloSeleccionJugadores;
+    @FXML
+    private VBox error;
+    @FXML
     private ComboBox<String> comboJ1,comboJ2;
     @FXML
-    private AnchorPane paneNormal,paneJugadores,paneInvisible;
+    private AnchorPane paneNormal,paneJugadores,paneInvisible,paneInvisible2;
     @FXML
     private ImageView avatarJ1, avatarJ2;
     private String j1Seleccionado, j2Seleccionado;
@@ -48,8 +55,8 @@ public class ControladorMenu extends ControladorGeneral {
      */
     @FXML
     public void comoJugar() throws IOException {
-            File instrucciones = new File("Resources/Instrucciones/Instrucciones.pdf");
-            Desktop.getDesktop().open(instrucciones);
+        File instrucciones = new File("Resources/Instrucciones/Instrucciones.pdf");
+        Desktop.getDesktop().open(instrucciones);
     }
 
     /**
@@ -112,11 +119,17 @@ public class ControladorMenu extends ControladorGeneral {
             comboJ1.getItems().add(jugador.getNombre());
             comboJ2.getItems().add(jugador.getNombre());
         }
-
     }
     @FXML
     private void volver(){
         cargarVista("Vistas/vistaMenu.fxml");
+    }
+    @FXML
+    private void volverError(){
+        tituloSeleccionJugadores.setVisible(true);
+        botonEmpezar.setVisible(true);
+        error.setVisible(false);
+        paneInvisible2.setMouseTransparent(true);
     }
 
     @FXML
@@ -127,9 +140,15 @@ public class ControladorMenu extends ControladorGeneral {
             getContenedor().setSistema(new Sistema(getContenedor().getGestorFicheros(),j1,j2));
             jugar();
         } else {
-            System.out.println("Error con los nombres de los jugadores."); //TODO Mostrar error en interfaz gráfica
+            mostrarError();
         }
 
+    }
+    private void mostrarError(){
+        tituloSeleccionJugadores.setVisible(false);
+        botonEmpezar.setVisible(false);
+        error.setVisible(true);
+        paneInvisible2.setMouseTransparent(false);
     }
 
     public void seleccionJ1() {

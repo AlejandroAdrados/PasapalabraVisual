@@ -82,7 +82,7 @@
       <AnchorPane fx:id="paneInvisible" mouseTransparent="true" onMouseClicked="#volver" prefHeight="768.0" prefWidth="1366.0" />
       <AnchorPane fx:id="paneCreacion" layoutX="439.0" layoutY="150.0" prefHeight="458.0" prefWidth="475.0" style="-fx-background-color: #0c2f91;" visible="false">
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="276.0" prefHeight="80.0" prefWidth="475.0" text="ESCRIBA SU NOMBRE" textFill="WHITE">
+            <Label fx:id="textoEscribaNombre" alignment="CENTER" contentDisplay="CENTER" layoutX="1.0" layoutY="276.0" prefHeight="80.0" prefWidth="475.0" text="ESCRIBA SU NOMBRE" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
@@ -92,15 +92,30 @@
                   <Image url="@../ImagenesAvatares/AvatarHombre.png" />
                </image>
             </ImageView>
-            <Polygon fill="WHITE" layoutX="136.0" layoutY="156.0" onMouseClicked="#avatarAnterior" points="-24.5, 29.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />
-            <Polygon fill="WHITE" layoutX="338.0" layoutY="156.0" onMouseClicked="#avatarSiguiente" points="26.5, 28.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />
+            <Polygon fx:id="flechaIzquierda" fill="WHITE" layoutX="136.0" layoutY="156.0" onMouseClicked="#avatarAnterior" points="-24.5, 29.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />
+            <Polygon fx:id="flechaDerecha" fill="WHITE" layoutX="338.0" layoutY="156.0" onMouseClicked="#avatarSiguiente" points="26.5, 28.0, 0.5, 50.0, 0.5, 6.0" stroke="WHITE" strokeType="INSIDE" />
             <TextField fx:id="creacionNombre" layoutX="111.0" layoutY="367.0" onAction="#crearJugador" prefHeight="53.0" prefWidth="254.0" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="80.0" prefWidth="475.0" text="SELECCIONE SU AVATAR" textFill="WHITE">
+            <Label fx:id="textoSeleccioneAvatar" alignment="CENTER" contentDisplay="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="80.0" prefWidth="475.0" text="SELECCIONE SU AVATAR" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <VBox fx:id="error" prefHeight="458.0" prefWidth="478.0" visible="false">
+               <children>
+                  <Label alignment="CENTER" prefHeight="108.0" prefWidth="485.0" text="ERROR" textFill="WHITE">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="244.0" prefWidth="477.0" text="Introduzca un nombre válido" textFill="WHITE">
+                     <font>
+                        <Font size="38.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="paneInvisible2" layoutX="439.0" layoutY="150.0" mouseTransparent="true" onMouseClicked="#volverError" prefHeight="458.0" prefWidth="475.0" />
    </children>
 </AnchorPane>
