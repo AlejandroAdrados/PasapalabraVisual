@@ -68,19 +68,9 @@ public class ControladorMenu extends ControladorGeneral {
     @FXML
     private void imagenDentro(MouseEvent mouseEvent) {  //Código de color #0c2f91
         ImageView imageView = (ImageView) mouseEvent.getSource();
-        if (imageView.getId().equals("jugar")) {
-            File file = new File("Resources/ImagenesMenu/jugar2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("admin")) {
-            File file = new File("Resources/ImagenesMenu/admin2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("como")) {
-            File file = new File("Resources/ImagenesMenu/como2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        }
+        File file = new File ("Resources/ImagenesMenu/"+imageView.getId()+"2.png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     /**
@@ -91,19 +81,9 @@ public class ControladorMenu extends ControladorGeneral {
     @FXML
     private void imagenFuera(MouseEvent mouseEvent) { //Código de color #0842e3
         ImageView imageView = (ImageView) mouseEvent.getSource();
-        if (imageView.getId().equals("jugar")) {
-            File file = new File("Resources/ImagenesMenu/jugar.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("admin")) {
-            File file = new File("Resources/ImagenesMenu/admin.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("como")) {
-            File file = new File("Resources/ImagenesMenu/como.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        }
+        File file = new File ("Resources/ImagenesMenu/"+imageView.getId()+".png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     /**
@@ -190,5 +170,18 @@ public class ControladorMenu extends ControladorGeneral {
         j2Seleccionado = comboJ2.getValue();
         Jugador jugador = getContenedor().getGestorFicheros().buscarJugador(j2Seleccionado);
         avatarJ2.setImage(avatarJugador(jugador));
+    }
+
+    @FXML
+    private void cargarPartida() throws IOException, ClassNotFoundException {  //TODO Mostrar mensaje no existe partida para cargar
+        Partida partida = getContenedor().getGestorFicheros().cargarPartida();
+        getContenedor().setSistema(partida.getSistema());
+        getContenedor().setPartidaCargada(true);
+        cargarVista("Vistas/vistaJuego.fxml");
+    }
+
+    @FXML
+    private void salir(){
+        System.exit(0);
     }
 }

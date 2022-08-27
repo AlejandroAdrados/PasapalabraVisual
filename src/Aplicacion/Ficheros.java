@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class Ficheros implements Serializable {
     private ArrayList<Jugador> jugadores;
     private File ficheroJugadores = new File("Resources/Jugadores.txt");
+    private File ficheroPartida = new File("Resources/PartidaGuardada.txt");
 
     /**
      * Método que carga los jugadores del fichero jugadores.txt en una lista.
@@ -77,4 +78,25 @@ public class Ficheros implements Serializable {
         return jugadores;
     }
 
+    public void guardarPartida(Partida partida) throws IOException {
+        if (!ficheroPartida.exists()) {
+            ficheroPartida.createNewFile();
+        }
+        ObjectOutputStream escribiendoFichero = new ObjectOutputStream(
+                new FileOutputStream("Resources/PartidaGuardada.txt"));
+        escribiendoFichero.writeObject(partida);
+        escribiendoFichero.close();
+    }
+
+    public Partida cargarPartida() throws IOException, ClassNotFoundException {
+        if (!ficheroPartida.exists()) {
+            return null;
+        } else {
+            ObjectInputStream leyendoFichero = new ObjectInputStream(
+                    new FileInputStream("Resources/PartidaGuardada.txt"));
+            Partida partida = (Partida) leyendoFichero.readObject();
+            leyendoFichero.close();
+            return partida;
+        }
+    }
 }

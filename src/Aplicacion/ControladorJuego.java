@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
@@ -19,7 +20,7 @@ import java.util.ResourceBundle;
 /**
  * Clase que controla la operativa de la vista del juego (vistaJuego.fxml).
  */
-public class ControladorJuego extends ControladorGeneral implements Initializable { //TODO Sumar partidas totales y puntos totales
+public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas totales y puntos totales
     @FXML
     private Label pregunta, letra, turno, puntos;
     @FXML
@@ -38,7 +39,41 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
     /**
      * Inicializa el juego y carga todas las palabras del rosco en cada jugador.
      */
-    public void cargarRosco() {
+    public void cargarRosco() throws IOException, ClassNotFoundException {
+        Partida partida = getContenedor().getGestorFicheros().cargarPartida();
+        if(getContenedor().isPartidaCargada()){
+            for(String rutaLetra : partida.getLetrasJ1()){
+                File archivo = new File(rutaLetra);
+                Image image = new Image(archivo.toURI().toString());
+                ImageView imageView = new ImageView(image);
+                imageView.setVisible(true);
+                imageView.setFitHeight(796);
+                imageView.setFitWidth(1366);
+                imageView.setPickOnBounds(true);
+                imageView.setPreserveRatio(true);
+                listaElementosJ1.add(imageView);
+            }
+            for(String rutaLetra : partida.getLetrasJ2()){
+                File archivo = new File(rutaLetra);
+                Image image = new Image(archivo.toURI().toString());
+                ImageView imageView = new ImageView(image);
+                imageView.setVisible(true);
+                imageView.setFitHeight(796);
+                imageView.setFitWidth(1366);
+                imageView.setPickOnBounds(true);
+                imageView.setPreserveRatio(true);
+                listaElementosJ2.add(imageView);
+            }
+            if(getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())){
+                pane2.getChildren().addAll(listaElementosJ1);
+            }else{
+                pane2.getChildren().addAll(listaElementosJ1);
+            }
+            cambiarTurno();
+        }else {
+            listaElementosJ1.addAll(pane2.getChildren());
+            listaElementosJ2.addAll(pane2.getChildren());
+        }
         turno.setText("Turno de " + getContenedor().getSistema().getJugadorActual().getNombre());
         avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
         try {
@@ -166,29 +201,52 @@ public class ControladorJuego extends ControladorGeneral implements Initializabl
      * @param resources The resources used to localize the root object, or {@code null} if
      *                  the root object was not localized.
      */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        listaElementosJ1.addAll(pane2.getChildren());
-        listaElementosJ2.addAll(pane2.getChildren());
+
+    /**
+     * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
+     */
+    @FXML
+    private void imagenDentro(MouseEvent mouseEvent) {  //Código de color #0c2f91
+        ImageView imageView = (ImageView) mouseEvent.getSource();
+        File file = new File ("Resources/ImagenesJuego/"+imageView.getId()+"2.png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     /**
      * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
      */
     @FXML
-    private void entrarImagen() {
-        File file = new File("Resources/ImagenesJuego/PasapalabraDentro.png");
+    private void imagenFuera(MouseEvent mouseEvent) { //Código de color #0842e3
+        ImageView imageView = (ImageView) mouseEvent.getSource();
+        File file = new File ("Resources/ImagenesJuego/"+imageView.getId()+".png");
         Image image = new Image(file.toURI().toString());
-        pasapalabra.setImage(image);
+        imageView.setImage(image);
     }
 
-    /**
-     * Método que cambia la apariencia del botón pasapalabra al pasar el ratón por  él.
-     */
     @FXML
-    public void salirImagen() {
-        File file = new File("Resources/ImagenesJuego/PasapalabraFuera.png");
-        Image image = new Image(file.toURI().toString());
-        pasapalabra.setImage(image);
+    private void guardarPartida() throws IOException {
+        ArrayList<String> letrasJ1 = new ArrayList<>();
+        ArrayList<String> letrasJ2 = new ArrayList<>();
+        cambiarTurno();
+        for(Node node : listaElementosJ1){
+            ImageView imagen = (ImageView) node;
+            int i = imagen.getImage().getUrl().indexOf("Resources/LETRASPASAPALABRA/");
+            letrasJ1.add(imagen.getImage().getUrl().substring(i));
+        }
+        for(Node node : listaElementosJ2){
+            ImageView imagen = (ImageView) node;
+            int i = imagen.getImage().getUrl().indexOf("Resources/LETRASPASAPALABRA/");
+            letrasJ2.add(imagen.getImage().getUrl().substring(i));
+        }
+        Partida partida = new Partida(getContenedor().getSistema(),letrasJ1,letrasJ2);
+        getContenedor().getGestorFicheros().guardarPartida(partida);
+        System.out.println("PARTIDA GUARDADA");
+        System.exit(0);
+    }
+
+    @FXML
+    private void abandonar(){
+        System.exit(0);
     }
 }

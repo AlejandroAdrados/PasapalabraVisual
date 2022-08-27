@@ -208,23 +208,9 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     @FXML
     private void imagenDentro(MouseEvent mouseEvent) {  //Código de color #0c2f91
         ImageView imageView = (ImageView) mouseEvent.getSource();
-        if (imageView.getId().equals("anadir")) {
-            File file = new File("Resources/ImagenesAdmin/anadir2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("eliminar")) {
-            File file = new File("Resources/ImagenesAdmin/eliminar2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("editar")) {
-            File file = new File("Resources/ImagenesAdmin/editar2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("atras")) {
-            File file = new File("Resources/ImagenesAdmin/atras2.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        }
+        File file = new File ("Resources/ImagenesAdmin/"+imageView.getId()+"2.png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     /**
@@ -235,23 +221,9 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     @FXML
     private void imagenFuera(MouseEvent mouseEvent) { //Código de color #0842e3
         ImageView imageView = (ImageView) mouseEvent.getSource();
-        if (imageView.getId().equals("anadir")) {
-            File file = new File("Resources/ImagenesAdmin/anadir.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("eliminar")) {
-            File file = new File("Resources/ImagenesAdmin/eliminar.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("editar")) {
-            File file = new File("Resources/ImagenesAdmin/editar.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        } else if (imageView.getId().equals("atras")) {
-            File file = new File("Resources/ImagenesAdmin/atras.png");
-            Image image = new Image(file.toURI().toString());
-            imageView.setImage(image);
-        }
+        File file = new File ("Resources/ImagenesAdmin/"+imageView.getId()+".png");
+        Image image = new Image(file.toURI().toString());
+        imageView.setImage(image);
     }
 
     /**

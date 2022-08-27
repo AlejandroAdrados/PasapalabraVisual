@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="pane" maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #0E266A;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.ControladorJuego">
+<AnchorPane fx:id="pane" maxHeight="1080.0" maxWidth="1920.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #0E266A;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.ControladorJuego">
    <children>
       <ImageView fitHeight="796.0" fitWidth="1366.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -28,7 +25,7 @@
             <Font size="77.0" />
          </font>
       </Label>
-      <ImageView fx:id="imagenTurno" fitHeight="128.0" fitWidth="352.0" layoutX="28.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="imagenTurno" fitHeight="128.0" fitWidth="352.0" layoutX="28.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../ImagenesJuego/Cartel.png" />
          </image>
@@ -53,9 +50,19 @@
             <Font size="30.0" />
          </font>
       </TextField>
-      <ImageView fx:id="pasapalabra" fitHeight="95.0" fitWidth="308.0" layoutX="1021.0" layoutY="637.0" onMouseClicked="#pasapalabra" onMouseEntered="#entrarImagen" onMouseExited="#salirImagen" pickOnBounds="true" preserveRatio="true" visible="false">
+      <ImageView fx:id="pasapalabra" fitHeight="95.0" fitWidth="308.0" layoutX="1021.0" layoutY="637.0" onMouseClicked="#pasapalabra" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../ImagenesJuego/PasapalabraFuera.png" />
+            <Image url="@../ImagenesJuego/pasapalabra.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="guardar" fitHeight="47.0" fitWidth="315.0" layoutX="1061.0" layoutY="36.0" onMouseClicked="#guardarPartida" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImagenesJuego/guardar.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="abandonar" fitHeight="47.0" fitWidth="308.0" layoutX="1039.0" layoutY="107.0" onMouseClicked="#abandonar" onMouseEntered="#imagenDentro" onMouseExited="#imagenFuera" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ImagenesJuego/abandonar.png" />
          </image>
       </ImageView>
    </children>

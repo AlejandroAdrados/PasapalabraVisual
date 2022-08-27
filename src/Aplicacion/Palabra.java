@@ -1,9 +1,11 @@
 package Aplicacion;
 
+import java.io.Serializable;
+
 /**
  * Clase que almacena la letra, el enunciado y la palabra en cuestión
  */
-public class Palabra {
+public class Palabra implements Serializable {
     private String letra;
     private String pregunta;
     private String solucion;

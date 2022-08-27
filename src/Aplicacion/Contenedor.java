@@ -3,14 +3,17 @@ package Aplicacion;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 
+import java.io.Serializable;
+
 /**
  * Clase que almacena la escena y el fxmlloader a lo largo de la ejecución (Indispensable para cambiar entre vistas).
  */
-public class Contenedor {
+public class Contenedor implements Serializable {
     private Stage escenario;
     private FXMLLoader fxmlLoader;
     private Ficheros gestorFicheros;
     private Sistema sistema;
+    private boolean partidaCargada;
 
     public Stage getEscenario() {
         return escenario;
@@ -42,5 +45,13 @@ public class Contenedor {
 
     public void setSistema(Sistema sistema) {
         this.sistema = sistema;
+    }
+
+    public boolean isPartidaCargada() {
+        return partidaCargada;
+    }
+
+    public void setPartidaCargada(boolean partidaCargada) {
+        this.partidaCargada = partidaCargada;
     }
 }

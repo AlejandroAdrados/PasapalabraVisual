@@ -1,13 +1,14 @@
 package Aplicacion;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Clase que controla la operativa general del programa
  */
-public class Sistema {
+public class Sistema implements Serializable {
     private ArrayList<Jugador> jugadores;
     private Jugador jugador1, jugador2, jugadorActual;
     private ArrayList<Palabra> palabrasJ1 = new ArrayList<>();
