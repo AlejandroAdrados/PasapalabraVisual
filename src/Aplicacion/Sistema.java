@@ -56,16 +56,16 @@ public class Sistema implements Serializable {
      * @return Boolean si se ha cambiado el turno o no
      */
     public Boolean cambiarTurno() {
-        if (jugadorActual.equals(jugador1) && jugador2.getLetrasRespondidas() < 25) {
+        if (jugadorActual.equals(jugador1) && (jugador2.getLetrasRespondidas() < 25 && jugador2.getTiempo()>0)) {
             jugadorActual = jugador2;
             palabrasJugadorActual = palabrasJ2;
             return true;
-        } else if (jugadorActual.equals(jugador2) && jugador1.getLetrasRespondidas() < 25) {
+        } else if (jugadorActual.equals(jugador2) && (jugador1.getLetrasRespondidas() < 25 && jugador1.getTiempo()>0)) {
             jugadorActual = jugador1;
             palabrasJugadorActual = palabrasJ1;
             return true;
         } else {
-            if (jugador1.getLetrasRespondidas() == 25 && jugador2.getLetrasRespondidas() == 25) {
+            if ((jugador1.getLetrasRespondidas() == 25 || jugador1.getTiempo()<= 0) && (jugador2.getLetrasRespondidas() == 25 || jugador2.getTiempo()<=0)) {
                 System.out.println("PARTIDA TERMINADA");
                 System.exit(0);
             }

@@ -1,7 +1,7 @@
 package Aplicacion;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,16 +13,22 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Clase que controla la operativa de la vista del juego (vistaJuego.fxml).
  */
 public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas totales y puntos totales
     @FXML
-    private Label pregunta, letra, turno, puntos;
+    private Label pregunta;
+    @FXML
+    private Label letra;
+    @FXML
+    private Label turno, tiempo;
+    @FXML
+    private Label puntos;
     @FXML
     private TextField respuesta;
     @FXML
@@ -40,9 +46,9 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
      * Inicializa el juego y carga todas las palabras del rosco en cada jugador.
      */
     public void cargarRosco() throws IOException, ClassNotFoundException {
-        Partida partida = getContenedor().getGestorFicheros().cargarPartida();
-        if(getContenedor().isPartidaCargada()){
-            for(String rutaLetra : partida.getLetrasJ1()){
+        if (getContenedor().isPartidaCargada()) {
+            Partida partida = getContenedor().getGestorFicheros().cargarPartida();
+            for (String rutaLetra : partida.getLetrasJ1()) {
                 File archivo = new File(rutaLetra);
                 Image image = new Image(archivo.toURI().toString());
                 ImageView imageView = new ImageView(image);
@@ -53,7 +59,7 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
                 imageView.setPreserveRatio(true);
                 listaElementosJ1.add(imageView);
             }
-            for(String rutaLetra : partida.getLetrasJ2()){
+            for (String rutaLetra : partida.getLetrasJ2()) {
                 File archivo = new File(rutaLetra);
                 Image image = new Image(archivo.toURI().toString());
                 ImageView imageView = new ImageView(image);
@@ -64,23 +70,24 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
                 imageView.setPreserveRatio(true);
                 listaElementosJ2.add(imageView);
             }
-            if(getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())){
-                pane2.getChildren().addAll(listaElementosJ1);
-            }else{
+            if (getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())) {
+                pane2.getChildren().addAll(listaElementosJ2);
+            } else {
                 pane2.getChildren().addAll(listaElementosJ1);
             }
             cambiarTurno();
-        }else {
+        } else {
             listaElementosJ1.addAll(pane2.getChildren());
             listaElementosJ2.addAll(pane2.getChildren());
+            try {
+                getContenedor().getSistema().cargarRosco();
+            } catch (IOException e) {
+                System.out.println("Error al cargar rosco");
+            }
         }
         turno.setText("Turno de " + getContenedor().getSistema().getJugadorActual().getNombre());
         avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
-        try {
-            getContenedor().getSistema().cargarRosco();
-        } catch (IOException e) {
-            System.out.println("Error al cargar rosco");
-        }
+        tiempo();
     }
 
     /**
@@ -208,7 +215,7 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
     @FXML
     private void imagenDentro(MouseEvent mouseEvent) {  //Código de color #0c2f91
         ImageView imageView = (ImageView) mouseEvent.getSource();
-        File file = new File ("Resources/ImagenesJuego/"+imageView.getId()+"2.png");
+        File file = new File("Resources/ImagenesJuego/" + imageView.getId() + "2.png");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
     }
@@ -219,7 +226,7 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
     @FXML
     private void imagenFuera(MouseEvent mouseEvent) { //Código de color #0842e3
         ImageView imageView = (ImageView) mouseEvent.getSource();
-        File file = new File ("Resources/ImagenesJuego/"+imageView.getId()+".png");
+        File file = new File("Resources/ImagenesJuego/" + imageView.getId() + ".png");
         Image image = new Image(file.toURI().toString());
         imageView.setImage(image);
     }
@@ -229,24 +236,46 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
         ArrayList<String> letrasJ1 = new ArrayList<>();
         ArrayList<String> letrasJ2 = new ArrayList<>();
         cambiarTurno();
-        for(Node node : listaElementosJ1){
+        for (Node node : listaElementosJ1) {
             ImageView imagen = (ImageView) node;
             int i = imagen.getImage().getUrl().indexOf("Resources/LETRASPASAPALABRA/");
             letrasJ1.add(imagen.getImage().getUrl().substring(i));
         }
-        for(Node node : listaElementosJ2){
+        for (Node node : listaElementosJ2) {
             ImageView imagen = (ImageView) node;
             int i = imagen.getImage().getUrl().indexOf("Resources/LETRASPASAPALABRA/");
             letrasJ2.add(imagen.getImage().getUrl().substring(i));
         }
-        Partida partida = new Partida(getContenedor().getSistema(),letrasJ1,letrasJ2);
+        Partida partida = new Partida(getContenedor().getSistema(), letrasJ1, letrasJ2);
         getContenedor().getGestorFicheros().guardarPartida(partida);
         System.out.println("PARTIDA GUARDADA");
         System.exit(0);
     }
 
     @FXML
-    private void abandonar(){
+    private void abandonar() {
         System.exit(0);
+    }
+
+    private void tiempo() {
+        int tiempoJugadorActual = getContenedor().getSistema().getJugadorActual().getTiempo();
+        Timer timer = new Timer();
+        TimerTask task = new TimerTask() {
+            public void run() {
+                getContenedor().getSistema().getJugadorActual().setTiempo(getContenedor().getSistema().getJugadorActual().getTiempo() - 1);
+                Platform.runLater(() -> {
+                    tiempo.setText(String.valueOf(getContenedor().getSistema().getJugadorActual().getTiempo()));
+                    if (getContenedor().getSistema().getJugadorActual().getTiempo() <= 0) {
+                        cambiarTurno();
+                        try {
+                            preguntar();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                });
+            }
+        };
+        timer.schedule(task, tiempoJugadorActual,1000);
     }
 }

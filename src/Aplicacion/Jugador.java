@@ -15,6 +15,7 @@ public class Jugador implements Serializable {
     private String avatar; //Ruta relativa de la imagen
     private int partidasJugadas; //Número que almacena el histórico de partidas jugadas por parte del jugador
     private int puntosTotales; //Número que almacena el histórico de puntos conseguidos por parte del jugador
+    private int tiempo;
 
     /**
      * Constructor de la clase cuando un jugador se crea desde el inicio.
@@ -25,6 +26,7 @@ public class Jugador implements Serializable {
     public Jugador(String nombre, String avatar) {
         this.nombre = nombre;
         this.avatar = avatar;
+        tiempo=120;
     }
 
     /**
@@ -40,6 +42,7 @@ public class Jugador implements Serializable {
         this.avatar = avatar;
         this.partidasJugadas = partidasJugadas;
         this.puntosTotales = puntosTotales;
+        tiempo=120;
     }
 
     public String getNombre() {
@@ -104,5 +107,13 @@ public class Jugador implements Serializable {
 
     public void sumarPuntosTotales() {
         puntosTotales += puntos;
+    }
+
+    public int getTiempo() {
+        return tiempo;
+    }
+
+    public void setTiempo(int tiempo) {
+        this.tiempo = tiempo;
     }
 }
