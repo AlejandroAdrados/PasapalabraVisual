@@ -9,7 +9,6 @@ import java.util.Scanner;
  * Clase que controla la operativa general del programa
  */
 public class Sistema implements Serializable {
-    private ArrayList<Jugador> jugadores;
     private Jugador jugador1, jugador2, jugadorActual;
     private ArrayList<Palabra> palabrasJ1 = new ArrayList<>();
     private ArrayList<Palabra> palabrasJ2 = new ArrayList<>();
@@ -53,23 +52,26 @@ public class Sistema implements Serializable {
     /**
      * Método que cambia el turno entre los jugadores si es posible
      *
-     * @return Boolean si se ha cambiado el turno o no
+     * @return int
+     * 0: Se ha cambiado el turno
+     * 1:No cambia turno pero la partida no ha terminado
+     * 2:La partida se ha terminado
      */
-    public Boolean cambiarTurno() {
+    public int cambiarTurno() {
         if (jugadorActual.equals(jugador1) && (jugador2.getLetrasRespondidas() < 25 && jugador2.getTiempo()>0)) {
             jugadorActual = jugador2;
             palabrasJugadorActual = palabrasJ2;
-            return true;
+            return 0;
         } else if (jugadorActual.equals(jugador2) && (jugador1.getLetrasRespondidas() < 25 && jugador1.getTiempo()>0)) {
             jugadorActual = jugador1;
             palabrasJugadorActual = palabrasJ1;
-            return true;
+            return 0;
         } else {
             if ((jugador1.getLetrasRespondidas() == 25 || jugador1.getTiempo()<= 0) && (jugador2.getLetrasRespondidas() == 25 || jugador2.getTiempo()<=0)) {
-                System.out.println("PARTIDA TERMINADA");
-                System.exit(0);
+                return 2;
+            }else {
+                return 1;
             }
-            return false;
         }
     }
 

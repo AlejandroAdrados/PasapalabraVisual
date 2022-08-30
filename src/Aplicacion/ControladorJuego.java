@@ -154,10 +154,10 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
     }
 
     /**
-     * Cambia el turno del jugador, cambiando avatar y rosco de cada uno
+     * Cambia el turno del jugador, cambiando avatar y rosco de cada uno.
      */
     private void cambiarTurno() {
-        if (getContenedor().getSistema().cambiarTurno()) {
+        if (getContenedor().getSistema().cambiarTurno()==0) {
             if (getContenedor().getSistema().getJugadorActual().equals(getContenedor().getSistema().getJugador1())) {
                 listaElementosJ1.clear();
                 listaElementosJ1.addAll(pane2.getChildren());
@@ -168,12 +168,12 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
                 listaElementosJ2.addAll(pane2.getChildren());
                 pane2.getChildren().clear();
                 pane2.getChildren().addAll(listaElementosJ1);
-                File file = new File("Resources/ImagenesAvatares/AvatarMujer.png");
-                Image image = new Image(file.toURI().toString());
                 avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
             }
             turno.setText("Turno de " + getContenedor().getSistema().getJugadorActual().getNombre());
             avatar.setImage(avatarJugador(getContenedor().getSistema().getJugadorActual()));
+        }else if (getContenedor().getSistema().cambiarTurno()==2) {
+            cargarVista("vistaFinal.fxml");
         }
     }
 
@@ -277,5 +277,17 @@ public class ControladorJuego extends ControladorGeneral { //TODO Sumar partidas
             }
         };
         timer.schedule(task, tiempoJugadorActual,1000);
+    }
+
+    @Override
+    protected void iniciarVista() {
+        try {
+            cargarRosco();
+            preguntar();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

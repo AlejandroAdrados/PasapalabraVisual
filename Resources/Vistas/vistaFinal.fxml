@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<AnchorPane prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Aplicacion.controladorFinal">
+   <children>
+      <Label fx:id="ganador" layoutX="557.0" layoutY="162.0" text="Label">
+         <font>
+            <Font size="46.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

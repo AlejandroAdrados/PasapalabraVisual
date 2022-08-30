@@ -35,14 +35,16 @@ public class ControladorGeneral {
             escenario.setScene(escena);
             escenario.toFront();
             escenario.show();
-            if (getContenedor().getFxmlLoader().getController() instanceof ControladorJuego) {
-                ((ControladorJuego) getContenedor().getFxmlLoader().getController()).cargarRosco();
-                ((ControladorJuego) getContenedor().getFxmlLoader().getController()).preguntar();
+            if (getContenedor().getFxmlLoader().getController() instanceof ControladorGeneral) {
+                ((ControladorGeneral) getContenedor().getFxmlLoader().getController()).iniciarVista();
             }
 
         } catch (Exception e) {
             System.out.println("Error de carga de " + vista);
         }
+    }
+
+    protected void iniciarVista() {
     }
 
     /**

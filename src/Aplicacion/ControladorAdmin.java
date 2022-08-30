@@ -24,7 +24,7 @@ import java.util.ResourceBundle;
 /**
  * Clase que controla la operativa de la vista del menú de administrador (vistaAdmin.fxml).
  */
-public class ControladorAdmin extends ControladorGeneral implements Initializable {
+public class ControladorAdmin extends ControladorGeneral {
 
     @FXML
     private AnchorPane paneNormal, paneCreacion, paneInvisible, paneInvisible2; //paneCreacion contiene los items de creación o edición de jugadores
@@ -39,7 +39,6 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     private Polygon flechaIzquierda, flechaDerecha;
     @FXML
     private VBox error;
-    private Ficheros gestorFicheros;
     private ArrayList<Jugador> jugadores;
     private String nombreJugadorSeleccionado;
     private Boolean edicion = false; //Indica si se está creando o editando un jugador
@@ -111,12 +110,12 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
             Jugador jugadorNuevo;
             if (edicion) {
                 jugadorNuevo = new Jugador(nombre, avatar, jugador.getPartidasJugadas(), jugador.getPuntosTotales());
-                gestorFicheros.eliminarJugador(jugador);
+                getContenedor().getGestorFicheros().eliminarJugador(jugador);
                 edicion = false;
             } else {
                 jugadorNuevo = new Jugador(nombre, avatar);
             }
-            gestorFicheros.guardarJugador(jugadorNuevo);
+            getContenedor().getGestorFicheros().guardarJugador(jugadorNuevo);
             paneCreacion.setVisible(false);
             paneNormal.setOpacity(1);
             cargarVista("Vistas/vistaAdmin.fxml");
@@ -143,30 +142,21 @@ public class ControladorAdmin extends ControladorGeneral implements Initializabl
     @FXML
     private void eliminarJugador() throws IOException {
         jugador = jugadorSeleccionado();
-        gestorFicheros.eliminarJugador(jugador);
+        getContenedor().getGestorFicheros().eliminarJugador(jugador);
         cargarVista("Vistas/vistaAdmin.fxml");
     }
 
-    /**
-     * Método que carga los elementos necesarios antes de mostrar la vista.
-     *
-     * @param location  The location used to resolve relative paths for the root object, or
-     *                  {@code null} if the location is not known.
-     * @param resources The resources used to localize the root object, or {@code null} if
-     *                  the root object was not localized.
-     */
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        gestorFicheros = new Ficheros();
+    protected void iniciarVista() {
         ListView<String> lista = new ListView<>();
         try {
-            gestorFicheros.leerJugadores();
+            getContenedor().getGestorFicheros().leerJugadores();
         } catch (IOException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        jugadores = gestorFicheros.getJugadores();
+        jugadores = getContenedor().getGestorFicheros().getJugadores();
         Label noJugadores = null;
         Boolean hayJugadores;
         if (jugadores.isEmpty()) {
